@@ -30,10 +30,26 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  min-height: 100vh;
+  background: linear-gradient(120deg, #420C6B, #000000, #005E00, #420C6B, #000000, #005E00);
+  background-size: 300% 300%;
+  /* animation: gradient-move 12s linear infinite; */
+  transition: background 0.3s;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .mono {
