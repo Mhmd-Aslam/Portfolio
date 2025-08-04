@@ -297,6 +297,35 @@
       }, 3000);
     }, 1500);
   };
+
+  // Svelte action for tracking mouse and updating gradient
+  function gradientFollow(node) {
+    function setGradient(e) {
+      const rect = node.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      node.style.setProperty('--gradient-x', `${x}%`);
+      node.style.setProperty('--gradient-y', `${y}%`);
+    }
+    function enableGradient() {
+      node.classList.add('gradient-active');
+    }
+    function disableGradient() {
+      node.classList.remove('gradient-active');
+      node.style.setProperty('--gradient-x', `50%`);
+      node.style.setProperty('--gradient-y', `50%`);
+    }
+    node.addEventListener('mousemove', setGradient);
+    node.addEventListener('mouseenter', enableGradient);
+    node.addEventListener('mouseleave', disableGradient);
+    return {
+      destroy() {
+        node.removeEventListener('mousemove', setGradient);
+        node.removeEventListener('mouseenter', enableGradient);
+        node.removeEventListener('mouseleave', disableGradient);
+      }
+    };
+  }
 </script>
 
 <svelte:head>
@@ -307,7 +336,7 @@
 <div class="portfolio-container">
   <!-- Header Section -->
   <section class="hero-section">
-    <div class="widget hero-widget">
+    <div class="widget hero-widget" use:gradientFollow>
       <!-- Status Header -->
       <div class="hero-header">
         <div class="status-bar">
@@ -394,17 +423,13 @@
   <!-- Main Content Grid -->
   <div class="grid grid-2 main-grid">
     <!-- About Widget -->
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">🛡️</span>
         <span class="widget-title">About</span>
       </div>
       <div class="widget-content">
         <div class="about-grid">
-          <div class="about-avatar">
-            <img src="https://avatars.githubusercontent.com/u/169330774?v=4" alt="Muhammad Aslam A" class="avatar-image" />
-            <div class="status-indicator online"></div>
-          </div>
           <div class="about-info">
             <h3>Cyber Security Student & Creative Developer</h3>
             <p>
@@ -431,7 +456,7 @@
     </div>
 
     <!-- Terminal Widget -->
-    <div class="widget terminal-widget">
+    <div class="widget terminal-widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">💻</span>
         <span class="widget-title">Terminal</span>
@@ -449,7 +474,7 @@
 
   <!-- Skills Section -->
   <section class="skills-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">💻</span>
         <span class="widget-title">Security Skills</span>
@@ -473,14 +498,14 @@
 
   <!-- Projects Section -->
   <section class="projects-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">⚡</span>
         <span class="widget-title">Security Projects</span>
       </div>
       <div class="grid grid-3">
         {#each projects as project}
-          <div class="project-card">
+          <div class="project-card" use:gradientFollow>
             <div class="project-header">
               <h3 class="project-title">{project.title}</h3>
               <span class="threat-level {project.threat_level.toLowerCase()}">{project.threat_level}</span>
@@ -500,7 +525,7 @@
 
   <!-- Education Section -->
   <section class="education-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">📚</span>
         <span class="widget-title">Education</span>
@@ -527,7 +552,7 @@
 
   <!-- Certifications Section -->
   <section class="certifications-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">📜</span>
         <span class="widget-title">Certifications</span>
@@ -549,7 +574,7 @@
 
   <!-- Experience Section -->
   <section class="experience-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">💼</span>
         <span class="widget-title">Experience</span>
@@ -576,7 +601,7 @@
 
   <!-- Tools Section -->
   <section class="tools-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">🛠️</span>
         <span class="widget-title">Tools</span>
@@ -601,7 +626,7 @@
 
   <!-- Achievements Section -->
   <section class="achievements-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">🏆</span>
         <span class="widget-title">Achievements</span>
@@ -623,7 +648,7 @@
 
   <!-- Articles Section -->
   <section class="articles-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">📄</span>
         <span class="widget-title">Articles</span>
@@ -650,7 +675,7 @@
 
   <!-- Testimonials Section -->
   <section class="testimonials-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">💬</span>
         <span class="widget-title">Testimonials</span>
@@ -672,7 +697,7 @@
 
   <!-- Timeline Section -->
   <section class="timeline-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">🕰️</span>
         <span class="widget-title">Timeline</span>
@@ -694,7 +719,7 @@
 
   <!-- Contact Section -->
   <section class="contact-section">
-    <div class="widget">
+    <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">📲</span>
         <span class="widget-title">Contact</span>
@@ -730,7 +755,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="widget footer-widget">
+    <div class="widget footer-widget" use:gradientFollow>
       <div class="footer-content">
         <p class="mono"> 2025 • Built with SvelteKit • Deployed on Vercel</p>
         <div class="footer-status">
@@ -756,9 +781,13 @@
   }
 
   .hero-widget {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
-    border: 2px solid var(--accent-primary);
-    box-shadow: var(--shadow-glow);
+    background: rgba(20, 20, 30, 0.7);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.45), 0 1.5px 8px 0 rgba(66,12,107,0.25), 0 1.5px 8px 0 rgba(0,94,0,0.18);
   }
 
   .hero-content {
@@ -921,7 +950,12 @@
   }
 
   .project-card {
-    background: var(--bg-secondary);
+    background: radial-gradient(
+      800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+      rgba(66,12,107,0.25) 0%,
+      rgba(0,94,0,0.15) 40%,
+      rgba(20,20,30,0.7) 100%
+    );
     border: 1px solid var(--border-secondary);
     border-radius: 8px;
     padding: 1.5rem;
@@ -991,8 +1025,16 @@
   }
 
   .footer-widget {
-    background: var(--bg-secondary);
+    background: radial-gradient(
+      800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+      rgba(66,12,107,0.25) 0%,
+      rgba(0,94,0,0.15) 40%,
+      rgba(20,20,30,0.7) 100%
+    );
     border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
   }
 
   .footer-content {
@@ -1001,6 +1043,28 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .widget,
+  .project-card,
+  .footer-widget,
+  .hero-widget {
+    background: radial-gradient(
+      800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+      rgba(66,12,107,0.25) 0%,
+      rgba(0,94,0,0.15) 40%,
+      rgba(20,20,30,0.7) 100%
+    );
+    /* Existing transparency, border, shadow, etc. remain unchanged */
+  }
+
+  .gradient-active {
+    background: radial-gradient(
+      800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+      rgba(66,12,107,0.25) 0%,
+      rgba(0,94,0,0.15) 40%,
+      rgba(20,20,30,0.7) 100%
+    );
   }
 
   @media (max-width: 768px) {
