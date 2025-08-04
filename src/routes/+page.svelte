@@ -347,7 +347,7 @@
           <div class="hero-info">
             <div class="hero-text">
               <h1 class="hero-title">
-                <span class="glitch" data-text="MUHAMMAD ASLAM A">MUHAMMAD ASLAM A</span>
+                <span>MUHAMMAD ASLAM A</span>
               </h1>
               
               <div class="hero-roles">
@@ -393,22 +393,6 @@
 
   <!-- Main Content Grid -->
   <div class="grid grid-2 main-grid">
-    <!-- Terminal Widget -->
-    <div class="widget terminal-widget">
-      <div class="widget-header">
-        <span class="widget-icon">💻</span>
-        <span class="widget-title">Terminal</span>
-        <div class="terminal-dots">
-          <div class="terminal-dot red"></div>
-          <div class="terminal-dot yellow"></div>
-          <div class="terminal-dot green"></div>
-        </div>
-      </div>
-      <div class="terminal">
-        <pre class="mono">{terminalText}</pre>
-      </div>
-    </div>
-
     <!-- About Widget -->
     <div class="widget">
       <div class="widget-header">
@@ -421,7 +405,6 @@
             <img src="https://avatars.githubusercontent.com/u/169330774?v=4" alt="Muhammad Aslam A" class="avatar-image" />
             <div class="status-indicator online"></div>
           </div>
-          
           <div class="about-info">
             <h3>Cyber Security Student & Creative Developer</h3>
             <p>
@@ -444,6 +427,22 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Terminal Widget -->
+    <div class="widget terminal-widget">
+      <div class="widget-header">
+        <span class="widget-icon">💻</span>
+        <span class="widget-title">Terminal</span>
+        <div class="terminal-dots">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+        </div>
+      </div>
+      <div class="terminal">
+        <pre class="mono">{terminalText}</pre>
       </div>
     </div>
   </div>
@@ -733,7 +732,7 @@
   <footer class="footer">
     <div class="widget footer-widget">
       <div class="footer-content">
-        <p class="mono"> 2024 • Built with SvelteKit • Deployed on Vercel</p>
+        <p class="mono"> 2025 • Built with SvelteKit • Deployed on Vercel</p>
         <div class="footer-status">
           <div class="status-indicator status-secure">
             <span>🔒</span>
