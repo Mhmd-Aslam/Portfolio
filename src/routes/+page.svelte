@@ -308,31 +308,67 @@
   <!-- Header Section -->
   <section class="hero-section">
     <div class="widget hero-widget">
-      <div class="hero-content">
+      <!-- Status Header -->
+      <div class="hero-header">
         <div class="status-bar">
-          <div class="status-indicator status-online">
-            <div class="pulse-dot"></div>
-            ONLINE
+          <div class="status-group">
+            <div class="status-indicator status-online">
+              <div class="pulse-dot"></div>
+              ONLINE
+            </div>
+            <div class="status-indicator status-secure">
+              <span>🔒</span>
+              SECURE
+            </div>
           </div>
-          <div class="status-indicator status-secure">
-            <span>🔒</span>
-            SECURE
+          <div class="time-display mono">{currentTime.toLocaleTimeString()}</div>
+        </div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="hero-main">
+          <!-- Avatar Section -->
+          <div class="hero-avatar-section">
+            <div class="hero-avatar">
+              <div class="avatar-ring"></div>
+              <img src="https://avatars.githubusercontent.com/u/169330774?v=4" alt="Muhammad Aslam A" class="avatar-image" />
+              <div class="avatar-status">
+                <div class="pulse-dot"></div>
+              </div>
+            </div>
+            <div class="avatar-info">
+              <div class="typing-indicator">
+                <span class="mono">$ whoami</span>
+              </div>
+            </div>
           </div>
-          <div class="mono">{currentTime.toLocaleTimeString()}</div>
+          
+          <!-- Info Section -->
+          <div class="hero-info">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                <span class="glitch" data-text="MUHAMMAD ASLAM A">MUHAMMAD ASLAM A</span>
+              </h1>
+              
+              <div class="hero-roles">
+                <span class="role-tag primary">🛡️ Cybersecurity Student</span>
+                <span class="role-tag secondary">💻 Creative Developer</span>
+                <span class="role-tag tertiary">🎓 BTech Computer Science</span>
+              </div>
+              
+              <p class="hero-location">
+                <span class="location-icon">📍</span>
+                <span>Kottayam, Kerala, India</span>
+              </p>
+              
+              <div class="hero-description">
+                <p>Passionate about cybersecurity, ethical hacking, and building innovative security solutions. Specialized in penetration testing, malware analysis, and digital forensics.</p>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <h1 class="hero-title">
-          <span class="glitch" data-text="MUHAMMAD ASLAM A">MUHAMMAD ASLAM A</span>
-        </h1>
-        
-        <p class="hero-subtitle">
-          Cyber Security Student • Creative Developer • BTech Computer Science
-        </p>
-        
-        <p class="hero-location">
-          📍 Kottayam, Kerala, India
-        </p>
-        
+        <!-- Stats Section -->
         <div class="hero-stats">
           <div class="stat">
             <div class="stat-value">8</div>
@@ -345,6 +381,10 @@
           <div class="stat">
             <div class="stat-value">∞</div>
             <div class="stat-label">Creativity</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">Learning</div>
           </div>
         </div>
       </div>
@@ -726,13 +766,28 @@
     text-align: center;
   }
 
-  .status-bar {
+  .hero-main {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .hero-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero-title {
@@ -958,8 +1013,9 @@
       gap: 2rem;
     }
     
-    .status-bar {
-      gap: 0.5rem;
+    .hero-main {
+      flex-direction: column;
+      align-items: center;
     }
     
     .footer-content {
