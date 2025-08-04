@@ -73,7 +73,6 @@ declare module '$env/static/private' {
 	export const OneDriveConsumer: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
-	export const PAGER: string;
 	export const Path: string;
 	export const PATHEXT: string;
 	export const PROCESSOR_ARCHITECTURE: string;
@@ -179,7 +178,6 @@ declare module '$env/dynamic/private' {
 		OneDriveConsumer: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
-		PAGER: string;
 		Path: string;
 		PATHEXT: string;
 		PROCESSOR_ARCHITECTURE: string;
