@@ -57,25 +57,46 @@
   
   const projects = [
     {
-      title: 'Vulnerability Scanner',
-      description: 'Python-based network vulnerability assessment tool with automated reporting',
-      tech: ['Python', 'Nmap', 'SQLite'],
-      status: 'Active',
-      threat_level: 'High'
+      title: 'Fezla-Crypter',
+      description: 'Advanced crypter application for file encryption and security',
+      tech: ['TypeScript', 'Cryptography', 'Security'],
+      threat_level: 'HIGH',
+      link: 'https://github.com/Mhmd-Aslam/Fezla-Crypter'
     },
     {
-      title: 'Network Monitor',
-      description: 'Real-time network traffic analysis and intrusion detection system',
-      tech: ['C++', 'Wireshark', 'Linux'],
-      status: 'Deployed',
-      threat_level: 'Medium'
+      title: 'ShieldX-Antivirus',
+      description: 'Python-based antivirus solution for malware detection',
+      tech: ['Python', 'Security', 'Malware'],
+      threat_level: 'HIGH',
+      link: 'https://github.com/Mhmd-Aslam/ShieldX-Antivirus'
     },
     {
-      title: 'Crypto Toolkit',
-      description: 'Collection of cryptographic algorithms and hash functions',
-      tech: ['C', 'OpenSSL', 'Assembly'],
-      status: 'Research',
-      threat_level: 'Low'
+      title: 'Cryptography',
+      description: 'Java-based cryptographic tools and algorithms implementation',
+      tech: ['Java', 'Algorithms', 'Encryption'],
+      threat_level: 'MEDIUM',
+      link: 'https://github.com/Mhmd-Aslam/Cryptography'
+    },
+    {
+      title: 'Anubis4D',
+      description: '4D game engine development project',
+      tech: ['Game Dev', 'Engine', 'Creative'],
+      threat_level: 'LOW',
+      link: 'https://github.com/Mhmd-Aslam/Anubis4D'
+    },
+    {
+      title: 'Excuse-Generator',
+      description: 'Creative Python application for generating excuses',
+      tech: ['Python', 'Creative', 'Fun'],
+      threat_level: 'LOW',
+      link: 'https://github.com/Mhmd-Aslam/Excuse-Generator'
+    },
+    {
+      title: 'Love-app',
+      description: 'Python application with creative functionality',
+      tech: ['Python', 'Creative', 'App'],
+      threat_level: 'LOW',
+      link: 'https://github.com/Mhmd-Aslam/Love-app'
     }
   ];
 </script>
@@ -103,25 +124,29 @@
         </div>
         
         <h1 class="hero-title">
-          <span class="glitch" data-text="CYBERSEC_PORTFOLIO">CYBERSEC_PORTFOLIO</span>
+          <span class="glitch" data-text="MUHAMMAD ASLAM A">MUHAMMAD ASLAM A</span>
         </h1>
         
         <p class="hero-subtitle">
-          BTech Computer Science (Cybersecurity) • Penetration Tester • Security Researcher
+          Cyber Security Student • Creative Developer • BTech Computer Science
+        </p>
+        
+        <p class="hero-location">
+          📍 Kottayam, Kerala, India
         </p>
         
         <div class="hero-stats">
           <div class="stat">
-            <div class="stat-value">3+</div>
-            <div class="stat-label">Years Learning</div>
+            <div class="stat-value">8</div>
+            <div class="stat-label">Public Repos</div>
           </div>
           <div class="stat">
-            <div class="stat-value">15+</div>
-            <div class="stat-label">Projects</div>
+            <div class="stat-value">4</div>
+            <div class="stat-label">Languages</div>
           </div>
           <div class="stat">
             <div class="stat-value">∞</div>
-            <div class="stat-label">Curiosity</div>
+            <div class="stat-label">Creativity</div>
           </div>
         </div>
       </div>
@@ -152,24 +177,35 @@
         <span class="widget-icon">🛡️</span>
         <span class="widget-title">About</span>
       </div>
-      <p class="widget-content">
-        Passionate cybersecurity student pursuing BTech in Computer Science with specialization in Cybersecurity. 
-        Focused on ethical hacking, vulnerability assessment, and building secure systems. 
-        Always learning and exploring the latest in cyber threats and defense mechanisms.
-      </p>
-      <div class="contact-links">
-        <a href="https://github.com" class="contact-link">
-          <span>📁</span>
-          GitHub
-        </a>
-        <a href="https://linkedin.com" class="contact-link">
-          <span>💼</span>
-          LinkedIn
-        </a>
-        <a href="mailto:contact@example.com" class="contact-link">
-          <span>📧</span>
-          Email
-        </a>
+      <div class="widget-content">
+        <div class="about-grid">
+          <div class="about-avatar">
+            <img src="https://avatars.githubusercontent.com/u/169330774?v=4" alt="Muhammad Aslam A" class="avatar-image" />
+            <div class="status-indicator online"></div>
+          </div>
+          
+          <div class="about-info">
+            <h3>Cyber Security Student & Creative Developer</h3>
+            <p>
+              Passionate cybersecurity student and creative developer from Kottayam, Kerala. 
+              Currently pursuing BTech in Computer Science with a specialization in cybersecurity. 
+              I love exploring new technologies, building creative solutions, and diving deep into 
+              security research and development.
+            </p>
+            
+            <div class="contact-links">
+              <a href="https://github.com/Mhmd-Aslam" class="contact-link" target="_blank">
+                🔗 GitHub
+              </a>
+              <a href="https://linkedin.com/in/muhammad-aslam-a" class="contact-link" target="_blank">
+                💼 LinkedIn
+              </a>
+              <a href="mailto:mhmd.aslam.dev@gmail.com" class="contact-link">
+                📧 Email
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -210,9 +246,7 @@
           <div class="project-card">
             <div class="project-header">
               <h3 class="project-title">{project.title}</h3>
-              <div class="project-status status-indicator {project.status.toLowerCase() === 'active' ? 'status-online' : project.status.toLowerCase() === 'deployed' ? 'status-secure' : 'status-warning'}">
-                {project.status}
-              </div>
+              <span class="threat-level {project.threat_level.toLowerCase()}">{project.threat_level}</span>
             </div>
             <p class="project-description">{project.description}</p>
             <div class="project-tech">
@@ -220,10 +254,7 @@
                 <span class="tech-tag">{tech}</span>
               {/each}
             </div>
-            <div class="project-footer">
-              <span class="threat-level">Threat Level: {project.threat_level}</span>
-              <span class="project-link">🔗</span>
-            </div>
+            <a href="{project.link}" target="_blank" class="project-link">🔗 View Code</a>
           </div>
         {/each}
       </div>
