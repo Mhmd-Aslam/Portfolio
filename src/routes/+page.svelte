@@ -99,6 +99,204 @@
       link: 'https://github.com/Mhmd-Aslam/Love-app'
     }
   ];
+
+  const education = [
+    {
+      degree: 'BTech Computer Science (Cybersecurity)',
+      institution: 'University Name',
+      location: 'Kottayam, Kerala',
+      period: '2021 - 2025',
+      status: 'In Progress',
+      gpa: '8.5/10',
+      coursework: ['Network Security', 'Cryptography', 'Ethical Hacking', 'Digital Forensics', 'Malware Analysis', 'Incident Response']
+    }
+  ];
+
+  const certifications = [
+    { name: 'CompTIA Security+', status: 'Planned', date: '2024' },
+    { name: 'Certified Ethical Hacker (CEH)', status: 'In Progress', date: '2024' },
+    { name: 'Google Cybersecurity Certificate', status: 'Completed', date: '2023' }
+  ];
+
+  const experience = [
+    {
+      title: 'Cybersecurity Research Intern',
+      company: 'Local Security Firm',
+      period: 'Jun 2023 - Aug 2023',
+      type: 'Internship',
+      description: 'Conducted vulnerability assessments and penetration testing on client systems',
+      achievements: ['Identified 15+ security vulnerabilities', 'Developed automated scanning scripts', 'Presented findings to senior management']
+    },
+    {
+      title: 'CTF Team Member',
+      company: 'University Cybersecurity Club',
+      period: '2022 - Present',
+      type: 'Competition',
+      description: 'Active participant in Capture The Flag competitions and cybersecurity challenges',
+      achievements: ['Top 10 finish in 3 national CTF competitions', 'Specialized in web exploitation and cryptography', 'Mentored junior team members']
+    },
+    {
+      title: 'Bug Bounty Hunter',
+      company: 'Various Platforms',
+      period: '2023 - Present',
+      type: 'Freelance',
+      description: 'Ethical hacking and vulnerability disclosure on bug bounty platforms',
+      achievements: ['Reported 8+ valid security vulnerabilities', 'Earned recognition from 3 companies', 'Specialized in web application security']
+    }
+  ];
+
+  const tools = [
+    { category: 'Security Tools', items: ['Nmap', 'Wireshark', 'Metasploit', 'Burp Suite', 'OWASP ZAP', 'Nessus'] },
+    { category: 'Operating Systems', items: ['Kali Linux', 'Ubuntu', 'Windows', 'Parrot OS'] },
+    { category: 'Programming', items: ['Python', 'Java', 'JavaScript', 'C++', 'Bash', 'PowerShell'] },
+    { category: 'Frameworks', items: ['Django', 'Flask', 'React', 'Node.js', 'SvelteKit'] },
+    { category: 'Forensics', items: ['Autopsy', 'Volatility', 'Sleuth Kit', 'FTK Imager'] },
+    { category: 'Cloud Security', items: ['AWS Security', 'Azure Security', 'Docker', 'Kubernetes'] }
+  ];
+
+  const achievements = [
+    {
+      title: 'National Cybersecurity Championship',
+      rank: '3rd Place',
+      date: '2023',
+      description: 'Secured 3rd position in national level cybersecurity competition with 500+ participants'
+    },
+    {
+      title: 'Academic Excellence Award',
+      rank: 'Top 5%',
+      date: '2023',
+      description: 'Recognized for outstanding academic performance in cybersecurity coursework'
+    },
+    {
+      title: 'Bug Bounty Recognition',
+      rank: 'Hall of Fame',
+      date: '2023',
+      description: 'Featured in security hall of fame for responsible vulnerability disclosure'
+    },
+    {
+      title: 'Open Source Contribution',
+      rank: 'Contributor',
+      date: '2023',
+      description: 'Active contributor to cybersecurity open source projects and tools'
+    }
+  ];
+
+  const articles = [
+    {
+      title: 'Understanding Buffer Overflow Attacks',
+      type: 'Technical Article',
+      date: '2023-12-15',
+      description: 'Deep dive into buffer overflow vulnerabilities and exploitation techniques',
+      readTime: '8 min read',
+      tags: ['Security', 'Exploitation', 'Memory']
+    },
+    {
+      title: 'Web Application Security Testing Guide',
+      type: 'Tutorial',
+      date: '2023-11-20',
+      description: 'Comprehensive guide to testing web applications for security vulnerabilities',
+      readTime: '12 min read',
+      tags: ['Web Security', 'Testing', 'OWASP']
+    },
+    {
+      title: 'CTF Writeup: CryptoChallenge 2023',
+      type: 'CTF Writeup',
+      date: '2023-10-10',
+      description: 'Detailed solution walkthrough for cryptography challenges',
+      readTime: '6 min read',
+      tags: ['CTF', 'Cryptography', 'Writeup']
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Dr. Sarah Johnson',
+      role: 'Cybersecurity Professor',
+      company: 'University',
+      text: 'Muhammad demonstrates exceptional analytical skills and a deep understanding of cybersecurity principles. His innovative approach to problem-solving sets him apart.',
+      image: '👩‍🏫'
+    },
+    {
+      name: 'Alex Chen',
+      role: 'Senior Security Analyst',
+      company: 'TechCorp',
+      text: 'Working with Muhammad during his internship was a pleasure. His technical skills and eagerness to learn made him a valuable team member.',
+      image: '👨‍💼'
+    },
+    {
+      name: 'Maria Rodriguez',
+      role: 'CTF Team Captain',
+      company: 'CyberWarriors',
+      text: 'Muhammad\'s expertise in cryptography and web exploitation has been instrumental in our team\'s success in multiple competitions.',
+      image: '👩‍💻'
+    }
+  ];
+
+  const timeline = [
+    {
+      year: '2021',
+      title: 'Started BTech Journey',
+      description: 'Began Computer Science degree with specialization in Cybersecurity',
+      type: 'education'
+    },
+    {
+      year: '2022',
+      title: 'First CTF Competition',
+      description: 'Participated in first Capture The Flag competition, discovered passion for ethical hacking',
+      type: 'achievement'
+    },
+    {
+      year: '2023',
+      title: 'Security Internship',
+      description: 'Completed cybersecurity internship, gained real-world experience in penetration testing',
+      type: 'experience'
+    },
+    {
+      year: '2023',
+      title: 'Bug Bounty Success',
+      description: 'Started bug bounty hunting, reported first critical vulnerability',
+      type: 'achievement'
+    },
+    {
+      year: '2024',
+      title: 'Advanced Projects',
+      description: 'Developed advanced security tools including Fezla-Crypter and ShieldX-Antivirus',
+      type: 'project'
+    },
+    {
+      year: '2024',
+      title: 'Portfolio Launch',
+      description: 'Created comprehensive cybersecurity portfolio showcasing skills and projects',
+      type: 'milestone'
+    }
+  ];
+
+  // Contact form state
+  let contactForm = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
+  let formSubmitted = false;
+  let formLoading = false;
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    formLoading = true;
+    
+    // Simulate form submission
+    setTimeout(() => {
+      formLoading = false;
+      formSubmitted = true;
+      contactForm = { name: '', email: '', subject: '', message: '' };
+      
+      setTimeout(() => {
+        formSubmitted = false;
+      }, 3000);
+    }, 1500);
+  };
 </script>
 
 <svelte:head>
@@ -261,11 +459,241 @@
     </div>
   </section>
 
+  <!-- Education Section -->
+  <section class="education-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">📚</span>
+        <span class="widget-title">Education</span>
+      </div>
+      <div class="education-grid">
+        {#each education as edu}
+          <div class="education-item">
+            <div class="education-header">
+              <span class="education-icon">🎓</span>
+              <span class="education-name">{edu.degree}</span>
+              <span class="education-institution">{edu.institution}</span>
+            </div>
+            <p class="education-description">{edu.description}</p>
+            <div class="education-coursework">
+              {#each edu.coursework as course}
+                <span class="course-tag">{course}</span>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="certifications-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">📜</span>
+        <span class="widget-title">Certifications</span>
+      </div>
+      <div class="certifications-grid">
+        {#each certifications as cert}
+          <div class="certification-item">
+            <div class="certification-header">
+              <span class="certification-icon">📜</span>
+              <span class="certification-name">{cert.name}</span>
+              <span class="certification-status">{cert.status}</span>
+            </div>
+            <p class="certification-description">{cert.description}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="experience-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">💼</span>
+        <span class="widget-title">Experience</span>
+      </div>
+      <div class="experience-grid">
+        {#each experience as exp}
+          <div class="experience-item">
+            <div class="experience-header">
+              <span class="experience-icon">💼</span>
+              <span class="experience-title">{exp.title}</span>
+              <span class="experience-company">{exp.company}</span>
+            </div>
+            <p class="experience-description">{exp.description}</p>
+            <div class="experience-achievements">
+              {#each exp.achievements as achievement}
+                <span class="achievement-tag">{achievement}</span>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="tools-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">🛠️</span>
+        <span class="widget-title">Tools</span>
+      </div>
+      <div class="tools-grid">
+        {#each tools as tool}
+          <div class="tool-item">
+            <div class="tool-header">
+              <span class="tool-icon">🛠️</span>
+              <span class="tool-name">{tool.category}</span>
+            </div>
+            <div class="tool-items">
+              {#each tool.items as item}
+                <span class="tool-tag">{item}</span>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievements-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">🏆</span>
+        <span class="widget-title">Achievements</span>
+      </div>
+      <div class="achievements-grid">
+        {#each achievements as achievement}
+          <div class="achievement-item">
+            <div class="achievement-header">
+              <span class="achievement-icon">🏆</span>
+              <span class="achievement-title">{achievement.title}</span>
+              <span class="achievement-rank">{achievement.rank}</span>
+            </div>
+            <p class="achievement-description">{achievement.description}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="articles-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">📄</span>
+        <span class="widget-title">Articles</span>
+      </div>
+      <div class="articles-grid">
+        {#each articles as article}
+          <div class="article-item">
+            <div class="article-header">
+              <span class="article-icon">📄</span>
+              <span class="article-title">{article.title}</span>
+              <span class="article-type">{article.type}</span>
+            </div>
+            <p class="article-description">{article.description}</p>
+            <div class="article-tags">
+              {#each article.tags as tag}
+                <span class="tag">{tag}</span>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">💬</span>
+        <span class="widget-title">Testimonials</span>
+      </div>
+      <div class="testimonials-grid">
+        {#each testimonials as testimonial}
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <span class="testimonial-icon">{testimonial.image}</span>
+              <span class="testimonial-name">{testimonial.name}</span>
+              <span class="testimonial-role">{testimonial.role}</span>
+            </div>
+            <p class="testimonial-text">{testimonial.text}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">🕰️</span>
+        <span class="widget-title">Timeline</span>
+      </div>
+      <div class="timeline-grid">
+        {#each timeline as event}
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-icon">🕰️</span>
+              <span class="timeline-year">{event.year}</span>
+              <span class="timeline-title">{event.title}</span>
+            </div>
+            <p class="timeline-description">{event.description}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-icon">📲</span>
+        <span class="widget-title">Contact</span>
+      </div>
+      <div class="contact-grid">
+        <form on:submit={handleContactSubmit}>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value={contactForm.name} />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value={contactForm.email} />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" value={contactForm.subject} />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" value={contactForm.message} />
+          </div>
+          <button type="submit" disabled={formLoading}>
+            {formLoading ? 'Sending...' : 'Send'}
+          </button>
+          {#if formSubmitted}
+            <p class="success-message">Message sent successfully!</p>
+          {/if}
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="widget footer-widget">
       <div class="footer-content">
-        <p class="mono">© 2024 • Built with SvelteKit • Deployed on Vercel</p>
+        <p class="mono"> 2024 • Built with SvelteKit • Deployed on Vercel</p>
         <div class="footer-status">
           <div class="status-indicator status-secure">
             <span>🔒</span>
