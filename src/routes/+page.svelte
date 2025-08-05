@@ -359,11 +359,7 @@
           <!-- Avatar Section -->
           <div class="hero-avatar-section">
             <div class="hero-avatar">
-              <div class="avatar-ring"></div>
-              <img src="https://avatars.githubusercontent.com/u/169330774?v=4" alt="Muhammad Aslam A" class="avatar-image" />
-              <div class="avatar-status">
-                <div class="pulse-dot"></div>
-              </div>
+              <img src="./images/dp.png" alt="Muhammad Aslam A" class="avatar-image" />
             </div>
             <div class="avatar-info">
               <div class="typing-indicator">
@@ -810,6 +806,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
   }
 
   .hero-info {
