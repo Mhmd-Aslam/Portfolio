@@ -13,18 +13,7 @@
   /* border and other styles remain unchanged */
 }
 
-.widget.gradient-active,
-.project-card.gradient-active,
-.footer-widget.gradient-active,
-.hero-widget.gradient-active {
-  background: radial-gradient(
-    180px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
-    rgba(66,12,107,0.25) 0%,
-    rgba(0,94,0,0.15) 40%,
-    rgba(20,20,30,0.7) 100%
-  ) !important;
-  transition: background 0.15s linear;
-}
+
 
 :root {
   --bg-primary: #000000;
@@ -161,14 +150,7 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.45), 0 1.5px 8px 0 rgba(66,12,107,0.25), 0 1.5px 8px 0 rgba(0,94,0,0.18);
 }
 
-.widget.gradient-active {
-  background: radial-gradient(
-    800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
-    rgba(66,12,107,0.25) 0%,
-    rgba(0,94,0,0.15) 40%,
-    rgba(20,20,30,0.7) 100%
-  ) !important;
-}
+
 
 .widget:hover {
   border-color: var(--accent-primary);
@@ -1076,6 +1058,21 @@ body {
 }
 
 /* Responsive Design for New Sections */
+
+/* Place the correct .gradient-active rule at the end for maximum specificity */
+.widget.gradient-active,
+.project-card.gradient-active,
+.footer-widget.gradient-active,
+.hero-widget.gradient-active {
+  background: radial-gradient(
+    600px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+    rgba(66,12,107,0.25) 0%,
+    rgba(48, 9, 79, 0.25) 40%,
+    rgba(20,20,30,0.7) 100%
+  ) !important;
+  transition: background 0.15s linear;
+}
+
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1508,14 +1505,4 @@ body {
   /* border and other styles remain unchanged */
 }
 
-.widget.gradient-active,
-.project-card.gradient-active,
-.footer-widget.gradient-active,
-.hero-widget.gradient-active {
-  background: radial-gradient(
-    800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
-    rgba(66,12,107,0.25) 0%,
-    rgba(0,94,0,0.15) 40%,
-    rgba(20,20,30,0.7) 100%
-  ) !important;
-}
+
