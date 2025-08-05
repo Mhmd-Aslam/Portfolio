@@ -102,13 +102,20 @@
 
   const education = [
     {
-      degree: 'BTech Computer Science (Cybersecurity)',
-      institution: 'University Name',
-      location: 'Kottayam, Kerala',
-      period: '2021 - 2025',
+      degree: 'Bachelor of Technology in Computer Science and Engineering (Cyber Security)',
+      institution: 'St. Joseph’s College of Engineering and Technology, Palai',
+      university: 'APJ Abdul Kalam Technological University, Kerala, India',
+      location: 'Kerala, India',
+      period: '2022 - 2026',
       status: 'In Progress',
-      gpa: '8.5/10',
-      coursework: ['Network Security', 'Cryptography', 'Ethical Hacking', 'Digital Forensics', 'Malware Analysis', 'Incident Response']
+      coursework: [
+        'Network Security',
+        'Cryptography',
+        'Ethical Hacking',
+        'Digital Forensics',
+        'Malware Analysis',
+        'Incident Response'
+      ]
     }
   ];
 
@@ -116,33 +123,6 @@
     { name: 'CompTIA Security+', status: 'Planned', date: '2024' },
     { name: 'Certified Ethical Hacker (CEH)', status: 'In Progress', date: '2024' },
     { name: 'Google Cybersecurity Certificate', status: 'Completed', date: '2023' }
-  ];
-
-  const experience = [
-    {
-      title: 'Cybersecurity Research Intern',
-      company: 'Local Security Firm',
-      period: 'Jun 2023 - Aug 2023',
-      type: 'Internship',
-      description: 'Conducted vulnerability assessments and penetration testing on client systems',
-      achievements: ['Identified 15+ security vulnerabilities', 'Developed automated scanning scripts', 'Presented findings to senior management']
-    },
-    {
-      title: 'CTF Team Member',
-      company: 'University Cybersecurity Club',
-      period: '2022 - Present',
-      type: 'Competition',
-      description: 'Active participant in Capture The Flag competitions and cybersecurity challenges',
-      achievements: ['Top 10 finish in 3 national CTF competitions', 'Specialized in web exploitation and cryptography', 'Mentored junior team members']
-    },
-    {
-      title: 'Bug Bounty Hunter',
-      company: 'Various Platforms',
-      period: '2023 - Present',
-      type: 'Freelance',
-      description: 'Ethical hacking and vulnerability disclosure on bug bounty platforms',
-      achievements: ['Reported 8+ valid security vulnerabilities', 'Earned recognition from 3 companies', 'Specialized in web application security']
-    }
   ];
 
   const tools = [
@@ -178,57 +158,6 @@
       rank: 'Contributor',
       date: '2023',
       description: 'Active contributor to cybersecurity open source projects and tools'
-    }
-  ];
-
-  const articles = [
-    {
-      title: 'Understanding Buffer Overflow Attacks',
-      type: 'Technical Article',
-      date: '2023-12-15',
-      description: 'Deep dive into buffer overflow vulnerabilities and exploitation techniques',
-      readTime: '8 min read',
-      tags: ['Security', 'Exploitation', 'Memory']
-    },
-    {
-      title: 'Web Application Security Testing Guide',
-      type: 'Tutorial',
-      date: '2023-11-20',
-      description: 'Comprehensive guide to testing web applications for security vulnerabilities',
-      readTime: '12 min read',
-      tags: ['Web Security', 'Testing', 'OWASP']
-    },
-    {
-      title: 'CTF Writeup: CryptoChallenge 2023',
-      type: 'CTF Writeup',
-      date: '2023-10-10',
-      description: 'Detailed solution walkthrough for cryptography challenges',
-      readTime: '6 min read',
-      tags: ['CTF', 'Cryptography', 'Writeup']
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Dr. Sarah Johnson',
-      role: 'Cybersecurity Professor',
-      company: 'University',
-      text: 'Muhammad demonstrates exceptional analytical skills and a deep understanding of cybersecurity principles. His innovative approach to problem-solving sets him apart.',
-      image: '👩‍🏫'
-    },
-    {
-      name: 'Alex Chen',
-      role: 'Senior Security Analyst',
-      company: 'TechCorp',
-      text: 'Working with Muhammad during his internship was a pleasure. His technical skills and eagerness to learn made him a valuable team member.',
-      image: '👨‍💼'
-    },
-    {
-      name: 'Maria Rodriguez',
-      role: 'CTF Team Captain',
-      company: 'CyberWarriors',
-      text: 'Muhammad\'s expertise in cryptography and web exploitation has been instrumental in our team\'s success in multiple competitions.',
-      image: '👩‍💻'
     }
   ];
 
@@ -531,10 +460,20 @@
           <div class="education-item">
             <div class="education-header">
               <span class="education-icon">🎓</span>
-              <span class="education-name">{edu.degree}</span>
-              <span class="education-institution">{edu.institution}</span>
+              <div class="education-line">{edu.degree}</div>
+              <div class="education-line">{edu.institution}</div>
+              {#if edu.university}
+                <div class="education-line">{edu.university}</div>
+              {/if}
+              {#if edu.period && edu.status}
+                <div class="education-line">{edu.period} ({edu.status})</div>
+              {:else if edu.period}
+                <div class="education-line">{edu.period}</div>
+              {:else if edu.status}
+                <div class="education-line">({edu.status})</div>
+              {/if}
+              <div class="education-line"></div>
             </div>
-            <p class="education-description">{edu.description}</p>
             <div class="education-coursework">
               {#each edu.coursework as course}
                 <span class="course-tag">{course}</span>
@@ -562,33 +501,6 @@
               <span class="certification-status">{cert.status}</span>
             </div>
             <p class="certification-description">{cert.description}</p>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section class="experience-section">
-    <div class="widget" use:gradientFollow>
-      <div class="widget-header">
-        <span class="widget-icon">💼</span>
-        <span class="widget-title">Experience</span>
-      </div>
-      <div class="experience-grid">
-        {#each experience as exp}
-          <div class="experience-item">
-            <div class="experience-header">
-              <span class="experience-icon">💼</span>
-              <span class="experience-title">{exp.title}</span>
-              <span class="experience-company">{exp.company}</span>
-            </div>
-            <p class="experience-description">{exp.description}</p>
-            <div class="experience-achievements">
-              {#each exp.achievements as achievement}
-                <span class="achievement-tag">{achievement}</span>
-              {/each}
-            </div>
           </div>
         {/each}
       </div>
@@ -636,55 +548,6 @@
               <span class="achievement-rank">{achievement.rank}</span>
             </div>
             <p class="achievement-description">{achievement.description}</p>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </section>
-
-  <!-- Articles Section -->
-  <section class="articles-section">
-    <div class="widget" use:gradientFollow>
-      <div class="widget-header">
-        <span class="widget-icon">📄</span>
-        <span class="widget-title">Articles</span>
-      </div>
-      <div class="articles-grid">
-        {#each articles as article}
-          <div class="article-item">
-            <div class="article-header">
-              <span class="article-icon">📄</span>
-              <span class="article-title">{article.title}</span>
-              <span class="article-type">{article.type}</span>
-            </div>
-            <p class="article-description">{article.description}</p>
-            <div class="article-tags">
-              {#each article.tags as tag}
-                <span class="tag">{tag}</span>
-              {/each}
-            </div>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials-section">
-    <div class="widget" use:gradientFollow>
-      <div class="widget-header">
-        <span class="widget-icon">💬</span>
-        <span class="widget-title">Testimonials</span>
-      </div>
-      <div class="testimonials-grid">
-        {#each testimonials as testimonial}
-          <div class="testimonial-item">
-            <div class="testimonial-header">
-              <span class="testimonial-icon">{testimonial.image}</span>
-              <span class="testimonial-name">{testimonial.name}</span>
-              <span class="testimonial-role">{testimonial.role}</span>
-            </div>
-            <p class="testimonial-text">{testimonial.text}</p>
           </div>
         {/each}
       </div>
