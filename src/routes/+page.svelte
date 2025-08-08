@@ -165,7 +165,7 @@
     {
       year: '2021',
       title: 'Started BTech Journey',
-      description: 'Began Computer Science degree with specialization in Cybersecurity',
+      description: 'Began Computer Science degree with specialization in CyberSecurity',
       type: 'education'
     },
     {
@@ -259,7 +259,7 @@
 
 <svelte:head>
   <title>CyberSec Portfolio - BTech Computer Science</title>
-  <meta name="description" content="Cybersecurity portfolio of a BTech Computer Science student specializing in penetration testing, network security, and digital forensics." />
+  <meta name="description" content="CyberSecurity portfolio of a BTech Computer Science student specializing in penetration testing, network security, and digital forensics." />
 </svelte:head>
 
 <div class="portfolio-container">
@@ -305,7 +305,7 @@
               </h1>
               
               <div class="hero-roles">
-                <span class="role-tag primary">🛡️ Cybersecurity Student</span>
+                <span class="role-tag primary">🛡️ CyberSecurity Student</span>
                 <span class="role-tag secondary">💻 Creative Developer</span>
                 <span class="role-tag tertiary">🎓 BTech Computer Science</span>
               </div>
@@ -316,7 +316,7 @@
               </p>
               
               <div class="hero-description">
-                <p>Passionate about cybersecurity, ethical hacking, and building innovative security solutions. Specialized in penetration testing, malware analysis, and digital forensics.</p>
+                <p>Passionate about CyberSecurity, Ethical Hacking, and building innovative security solutions. Specialized in Penetration Testing, Malware Analysis, and Digital Forensics.</p>
               </div>
             </div>
           </div>
@@ -358,8 +358,8 @@
           <div class="about-info">
             <h3>Cyber Security Student & Creative Developer</h3>
             <p>
-              Passionate cybersecurity student and creative developer from Kottayam, Kerala. 
-              Currently pursuing BTech in Computer Science with a specialization in cybersecurity. 
+              Passionate CyberSecurity student and creative developer from Kottayam, Kerala, India. 
+              Currently pursuing BTech in Computer Science and Engineering with a specialization in CyberSecurity. 
               I love exploring new technologies, building creative solutions, and diving deep into 
               security research and development.
             </p>
@@ -412,16 +412,10 @@
       </div>
       <div class="skills-grid">
         {#each skills as skill}
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-icon">{skill.icon}</span>
-              <span class="skill-name">{skill.name}</span>
-              <span class="skill-percentage">{skill.level}%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: {skill.level}%"></div>
-            </div>
-          </div>
+          <span class="skill-badge">
+            <span class="skill-badge-icon">{skill.icon}</span>
+            <span class="skill-badge-name">{skill.name}</span>
+          </span>
         {/each}
       </div>
     </div>
@@ -432,7 +426,7 @@
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">⚡</span>
-        <span class="widget-title">Security Projects</span>
+        <span class="widget-title">Projects</span>
       </div>
       <div class="grid grid-3">
         {#each projects as project}
@@ -770,8 +764,8 @@
 
   .skills-grid {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .skill-item {
@@ -815,6 +809,31 @@
     transition: width 1s ease;
   }
 
+  /* New badge styles (no levels) */
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .skill-badge:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: translateY(-1px);
+  }
+  .skill-badge-icon {
+    color: var(--accent-primary);
+  }
+  .skill-badge-name {
+    white-space: nowrap;
+  }
+
   .project-card {
     background: radial-gradient(
       800px circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
@@ -826,6 +845,8 @@
     border-radius: 8px;
     padding: 1.5rem;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
 
   .project-card:hover {
@@ -884,6 +905,12 @@
   .project-link {
     color: var(--accent-primary);
     cursor: pointer;
+    margin-top: auto; /* push link to bottom of card */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-start; /* keep link width to content */
   }
 
   .footer {
