@@ -146,11 +146,11 @@
     },
     {
       name: 'Privacy and Security in Online Social Media',
-      issuer: 'NPTEL (IIT Hyderabad)',
+      issuer: 'NPTEL (IIIT Hyderabad)',
       status: '',
       date: 'Apr 2024',
       url: 'https://archive.nptel.ac.in/content/noc/NOC24/SEM1/Ecertificates/106/noc24-cs04/Course/NPTEL24CS04S116010009630419719.pdf',
-      description: 'NPTEL (IIT Hyderabad) — Privacy and Security in Online Social Media'
+      description: 'NPTEL (IIIT Hyderabad) — Privacy and Security in Online Social Media'
     },
     {
       name: 'Cyber Security and Privacy',
@@ -165,36 +165,18 @@
   const tools = [
     { category: 'Security Tools', items: ['Nmap', 'Wireshark', 'Metasploit', 'Burp Suite', 'OWASP ZAP', 'Nessus'] },
     { category: 'Operating Systems', items: ['Kali Linux', 'Ubuntu', 'Windows', 'Parrot OS'] },
-    { category: 'Programming', items: ['Python', 'Java', 'JavaScript', 'C++', 'Bash', 'PowerShell'] },
-    { category: 'Frameworks', items: ['Django', 'Flask', 'React', 'Node.js', 'SvelteKit'] },
-    { category: 'Forensics', items: ['Autopsy', 'Volatility', 'Sleuth Kit', 'FTK Imager'] },
+    { category: 'Programming', items: ['Python', 'Java', 'JavaScript', 'C', 'Bash', 'PowerShell', 'LaTeX'] },
+    { category: 'Frameworks', items: ['React', 'Node.js', 'Django', 'Flask', 'Qt', 'SvelteKit'] },
+    { category: 'Forensics', items: ['Autopsy', 'Volatility', 'Sleuth Kit', 'FTK Imager', 'HashCalc'] },
     { category: 'Cloud Security', items: ['AWS Security', 'Azure Security', 'Docker', 'Kubernetes'] }
   ];
 
   const achievements = [
     {
-      title: 'National Cybersecurity Championship',
-      rank: '3rd Place',
-      date: '2023',
-      description: 'Secured 3rd position in national level cybersecurity competition with 500+ participants'
-    },
-    {
-      title: 'Academic Excellence Award',
-      rank: 'Top 5%',
-      date: '2023',
-      description: 'Recognized for outstanding academic performance in cybersecurity coursework'
-    },
-    {
-      title: 'Bug Bounty Recognition',
-      rank: 'Hall of Fame',
-      date: '2023',
-      description: 'Featured in security hall of fame for responsible vulnerability disclosure'
-    },
-    {
-      title: 'Open Source Contribution',
-      rank: 'Contributor',
-      date: '2023',
-      description: 'Active contributor to cybersecurity open source projects and tools'
+      title: 'Auto Quiz — SAEINDIA',
+      rank: '1st Place',
+      date: '02 Nov 2023',
+      description: 'Won first position in Auto Quiz at Spectra 2.0, organized by SAEINDIA Collegiate Club of SJCET.'
     }
   ];
 
@@ -1006,7 +988,7 @@
     color: var(--text-secondary);
     background: var(--bg-tertiary);
   }
-  .cert-badge.issuer {}
+  /* issuer badge inherits default .cert-badge styles */
   .cert-badge.date { color: var(--text-muted); }
   .cert-badge.status { color: var(--accent-primary); border-color: var(--accent-primary); }
 
