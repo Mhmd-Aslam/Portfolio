@@ -359,6 +359,18 @@
             <div class="stat-value">24/7</div>
             <div class="stat-label">Learning</div>
           </div>
+          <!-- Resume CTA as a highlighted stat card -->
+          <div class="stat stat-resume" aria-label="Resume">
+            <a
+              class="stat-resume-link"
+              href="/pdf/Muhammad_Aslam_A_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="stat-value" aria-hidden="true">📄</div>
+              <div class="stat-label">Resume</div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -646,6 +658,29 @@
             <p class="success-message">Message sent successfully!</p>
           {/if}
         </form>
+        <aside class="contact-side">
+          <div class="qr-card">
+            <h4 class="qr-title">Scan to follow on Instagram</h4>
+            <a
+              class="qr-box"
+              href="https://www.instagram.com/mhmd__aslam__/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Instagram profile in a new tab"
+            >
+              <img
+                class="qr-image"
+                src="/images/ig_qr.png"
+                alt="QR code to Instagram profile @mhmd__aslam__"
+                width="180"
+                height="180"
+                decoding="async"
+              />
+            </a>
+            <p class="qr-caption mono">@mhmd__aslam__</p>
+            <a class="qr-btn" href="https://www.instagram.com/mhmd__aslam__/" target="_blank" rel="noopener noreferrer">Open Profile</a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -754,6 +789,60 @@
     letter-spacing: 0.5px;
   }
 
+  /* Resume CTA stat card (same structure as stats, unique border/glow) */
+  .stat-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: 3px solid rgba(0,255,136,0.45);
+    border-radius: 12px;
+    background: radial-gradient(1200px 1200px at var(--gradient-x, 50%) var(--gradient-y, 50%), rgba(0,255,136,0.12), transparent 50%),
+                linear-gradient(135deg, rgba(98,0,234,0.12), rgba(0,0,0,0.1));
+    box-shadow: 0 10px 28px rgba(0,255,136,0.12), inset 0 0 0 1px rgba(0,255,136,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-resume::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: conic-gradient(from 0deg, rgba(0,255,136,0.0), rgba(0,255,136,0.35), rgba(98,0,234,0.35), rgba(0,255,136,0.0));
+    filter: blur(18px);
+    opacity: 0.35;
+    pointer-events: none;
+    animation: resumeGlow 4s linear infinite;
+  }
+  @keyframes resumeGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .stat-resume-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .stat-resume:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 12px 30px rgba(0,255,136,0.18), inset 0 0 0 1px rgba(0,255,136,0.2);
+  }
+  /* Make Resume label more noticeable */
+  .stat-resume .stat-label {
+    color: var(--accent-primary);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0,255,136,0.35);
+  }
+  .stat-resume-link:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+
   .main-grid {
     margin-bottom: 1rem;
   }
@@ -818,20 +907,103 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--bg-secondary);
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
     border: 1px solid var(--border-secondary);
-    border-radius: 8px;
-    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
     text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
-
   .contact-link:hover {
     border-color: var(--accent-primary);
     color: var(--accent-primary);
     transform: translateY(-1px);
+  }
+
+  /* Right-side QR panel */
+  .contact-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .qr-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-secondary);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.2)), var(--bg-tertiary);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    text-align: center;
+  }
+  .qr-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+  .qr-box {
+    display: inline-block;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-secondary);
+    background: radial-gradient(120px 120px at var(--gradient-x,50%) var(--gradient-y,50%), rgba(0,255,136,0.12), transparent 60%);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .qr-box:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 28px rgba(0,255,136,0.12);
+  }
+  .qr-image {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  }
+  .qr-caption {
+    margin: 0.6rem 0 0.8rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  .qr-btn {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-secondary);
+    background: linear-gradient(135deg, rgba(0,255,136,0.12), rgba(98,0,234,0.12)), var(--bg-tertiary);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .qr-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 6px 20px rgba(0,255,136,0.12);
+  }
+
+  /* Responsive sizing for the QR panel */
+  @media (max-width: 1024px) {
+    .qr-card {
+      max-width: 380px;
+    }
+    .qr-image {
+      width: 220px;
+      height: 220px;
+    }
+  }
+  @media (max-width: 640px) {
+    .contact-side {
+      margin-top: 1rem;
+    }
+    .qr-card {
+      max-width: 100%;
+    }
+    .qr-image {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   /* Improved Send button */
