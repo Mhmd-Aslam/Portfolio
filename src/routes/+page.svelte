@@ -365,13 +365,19 @@
             </p>
             
             <div class="contact-links">
-              <a href="https://github.com/Mhmd-Aslam" class="contact-link" target="_blank">
+              <a href="https://github.com/Mhmd-Aslam" title="github.com/Mhmd-Aslam" class="contact-link" target="_blank">
                 🔗 GitHub
               </a>
-              <a href="https://linkedin.com/in/muhammad-aslam-a" class="contact-link" target="_blank">
+              <a href="https://linkedin.com/in/muhammad-aslam-a-a8710221a" title="linkedin.com/in/muhammad-aslam-a-a8710221a" class="contact-link" target="_blank">
                 💼 LinkedIn
               </a>
-              <a href="mailto:mhmd.aslam.dev@gmail.com" class="contact-link">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=aslamaass108@gmail.com"
+                title="aslamaass108@gmail.com"
+                class="contact-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 📧 Email
               </a>
             </div>
