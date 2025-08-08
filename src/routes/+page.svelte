@@ -628,8 +628,19 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" value={contactForm.message} />
           </div>
-          <button type="submit" disabled={formLoading}>
-            {formLoading ? 'Sending...' : 'Send'}
+          <button
+            type="submit"
+            class="btn-send"
+            disabled={formLoading}
+            aria-busy={formLoading}
+          >
+            {#if formLoading}
+              <span class="spinner" aria-hidden="true"></span>
+              <span>Sending…</span>
+            {:else}
+              <span>Send</span>
+              <span class="btn-arrow">➜</span>
+            {/if}
           </button>
           {#if formSubmitted}
             <p class="success-message">Message sent successfully!</p>
@@ -643,7 +654,7 @@
   <footer class="footer">
     <div class="widget footer-widget" use:gradientFollow>
       <div class="footer-content">
-        <p class="mono"> 2025 • MHMD ASLAM • All Rights Reserved</p>
+        <p class="mono"><span class="copyright-symbol">©</span> • 2025 • MHMD ASLAM • All Rights Reserved</p>
         <div class="footer-status">
           <div class="status-indicator status-secure">
             <span>🔒</span>
@@ -769,6 +780,40 @@
     flex-wrap: wrap;
   }
 
+  /* Contact form inputs */
+  .contact-grid textarea {
+    resize: none; /* prevent manual resize */
+    overflow: auto; /* allow scrolling for long messages */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #ffffff var(--bg-secondary); /* Firefox: white thumb on dark track */
+  }
+  /* WebKit scrollbars */
+  .contact-grid textarea::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .contact-grid textarea::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+  }
+  .contact-grid textarea::-webkit-scrollbar-thumb {
+    background: #ffffff; /* white thumb */
+    border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+  }
+  .contact-grid textarea::-webkit-scrollbar-thumb:hover {
+    background: #ffffffcc; /* slightly transparent on hover */
+  }
+  /* Scrollbar arrows/buttons (WebKit-based browsers) */
+  .contact-grid textarea::-webkit-scrollbar-button {
+    background: #ffffff; /* white buttons/arrows */
+    width: 10px;
+    height: 10px;
+  }
+  .contact-grid textarea::-webkit-scrollbar-corner {
+    background: var(--bg-secondary);
+  }
+
   .contact-link {
     display: flex;
     align-items: center;
@@ -787,6 +832,66 @@
     border-color: var(--accent-primary);
     color: var(--accent-primary);
     transform: translateY(-1px);
+  }
+
+  /* Improved Send button */
+  .btn-send {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--border-secondary);
+    /* Cyber gradient using theme accents for a more attractive look */
+    background:
+      linear-gradient(135deg, rgba(0,255,136,0.16), rgba(98,0,234,0.16)),
+      var(--bg-tertiary);
+    box-shadow: inset 0 0 0 1px rgba(0,255,136,0.15);
+    color: var(--text-primary);
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-send:hover:not([disabled]) {
+    transform: translateY(-1px);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+    background:
+      linear-gradient(135deg, rgba(0,255,136,0.22), rgba(98,0,234,0.22)),
+      var(--bg-tertiary);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.15), 0 0 0 1px rgba(0,255,136,0.25) inset;
+  }
+  .btn-send:active:not([disabled]) {
+    transform: translateY(0);
+  }
+  .btn-send[disabled] {
+    opacity: 0.75;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .btn-send:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+  .btn-arrow {
+    transition: transform 0.15s ease;
+  }
+  .btn-send:hover .btn-arrow {
+    transform: translateX(2px);
+  }
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-primary);
+    border-right-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .skills-grid {
@@ -1015,6 +1120,15 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  /* Larger copyright symbol aligned with text */
+  .copyright-symbol {
+    font-size: 1.9em;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.25rem;
   }
 
   .widget,
