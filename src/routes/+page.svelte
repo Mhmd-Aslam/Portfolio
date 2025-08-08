@@ -180,42 +180,27 @@
     }
   ];
 
-  const timeline = [
+  // Experiences (replaces timeline)
+  const experiences = [
     {
-      year: '2021',
-      title: 'Started BTech Journey',
-      description: 'Began Computer Science degree with specialization in CyberSecurity',
-      type: 'education'
+      role: 'Cybersecurity Intern',
+      company: 'Redynox',
+      period: 'Aug 6, 2025 — (In Progress) • 1 month • Remote',
+      highlights: [
+        'Selected for 1‑month Cybersecurity Internship Program (offer dated 5 Aug 2025).',
+        'Hands‑on exposure: network security, vulnerability assessment, penetration testing, incident response.',
+        'Working with the cybersecurity team on real‑world projects.'
+      ]
     },
     {
-      year: '2022',
-      title: 'First CTF Competition',
-      description: 'Participated in first Capture The Flag competition, discovered passion for ethical hacking',
-      type: 'achievement'
-    },
-    {
-      year: '2023',
-      title: 'Security Internship',
-      description: 'Completed cybersecurity internship, gained real-world experience in penetration testing',
-      type: 'experience'
-    },
-    {
-      year: '2023',
-      title: 'Bug Bounty Success',
-      description: 'Started bug bounty hunting, reported first critical vulnerability',
-      type: 'achievement'
-    },
-    {
-      year: '2024',
-      title: 'Advanced Projects',
-      description: 'Developed advanced security tools including Fezla-Crypter and ShieldX-Antivirus',
-      type: 'project'
-    },
-    {
-      year: '2024',
-      title: 'Portfolio Launch',
-      description: 'Created comprehensive cybersecurity portfolio showcasing skills and projects',
-      type: 'milestone'
+      role: 'Django Intern',
+      company: 'Perpex',
+      period: 'Aug 7, 2025 — (In Progress) • 3 months • Remote',
+      highlights: [
+        'Internship focused on real‑world project experience and structured learning.',
+        'Hands‑on exposure: web development, Django framework, project management.',
+        'Working with the Django team on real‑world projects.'
+      ]
     }
   ];
 
@@ -592,24 +577,29 @@
       </div>
     </div>
   </section>
-
-  <!-- Timeline Section -->
-  <section class="timeline-section">
+  <!-- Experiences Section (replacing Timeline) -->
+  <section class="experiences-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">🕰️</span>
-        <span class="widget-title">Timeline</span>
+        <span class="widget-icon">💼</span>
+        <span class="widget-title">Experiences</span>
       </div>
-      <div class="timeline-grid">
-        {#each timeline as event}
-          <div class="timeline-item">
-            <div class="timeline-header">
-              <span class="timeline-icon">🕰️</span>
-              <span class="timeline-year">{event.year}</span>
-              <span class="timeline-title">{event.title}</span>
-            </div>
-            <p class="timeline-description">{event.description}</p>
-          </div>
+      <div class="experiences-grid">
+        {#each experiences as exp}
+          <article class="experience-card" aria-label={`${exp.role} at ${exp.company}`}>
+            <header class="experience-header">
+              <span class="experience-icon" aria-hidden="true">💼</span>
+              <h3 class="experience-title">{exp.role} • {exp.company}</h3>
+            </header>
+            <ul class="experience-list">
+              {#each exp.highlights as h}
+                <li>{h}</li>
+              {/each}
+            </ul>
+            <footer class="experience-footer">
+              <span class="experience-period mono">{exp.period}</span>
+            </footer>
+          </article>
         {/each}
       </div>
     </div>
@@ -845,6 +835,74 @@
 
   .main-grid {
     margin-bottom: 1rem;
+  }
+
+  /* Experiences sub-cards */
+  .experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .experience-card {
+    background: rgba(20, 20, 30, 0.6);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 1rem;
+    backdrop-filter: blur(8px);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+  }
+  .experience-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 28px rgba(0,255,136,0.12);
+  }
+  .experience-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.6rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .experience-icon {
+    font-size: 1.1rem;
+  }
+  .experience-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .experience-period {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(0,255,136,0.4);
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(98,0,234,0.06));
+  }
+  .experience-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.1rem;
+    color: var(--text-secondary);
+    flex: 1 1 auto;
+  }
+  .experience-list li {
+    margin: 0.25rem 0;
+    position: relative;
+  }
+  .experience-list li::marker {
+    color: var(--accent-primary);
+  }
+  .experience-footer {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-secondary);
+    display: flex;
+    justify-content: flex-end;
   }
 
   .terminal-widget {
