@@ -47,12 +47,28 @@
   });
   
   const skills = [
+    // Cybersecurity
     { name: 'Penetration Testing', level: 85, icon: '🛡️' },
+    { name: 'Ethical Hacking', level: 90, icon: '🕵️‍♂️' },
     { name: 'Network Security', level: 90, icon: '🌐' },
     { name: 'Malware Analysis', level: 75, icon: '🔍' },
     { name: 'Cryptography', level: 80, icon: '🔐' },
-    { name: 'Python/C++', level: 95, icon: '💻' },
-    { name: 'Digital Forensics', level: 70, icon: '🔬' }
+    { name: 'Digital Forensics', level: 70, icon: '🔬' },
+    // Computer Science / Core CS
+    { name: 'Data Structures', level: 85, icon: '🗂️' },
+    { name: 'Algorithms', level: 85, icon: '📈' },
+    { name: 'Operating Systems', level: 80, icon: '🖥️' },
+    { name: 'Databases (SQL/NoSQL)', level: 80, icon: '🗄️' },
+    { name: 'OOP', level: 85, icon: '📦' },
+    { name: 'Computer Networks', level: 85, icon: '🛰️' },
+    // Development
+    { name: 'Python', level: 90, icon: '🐍' },
+    { name: 'C/C++', level: 85, icon: '💻' },
+    { name: 'Java', level: 80, icon: '☕' },
+    { name: 'JavaScript/TypeScript', level: 85, icon: '🧩' },
+    { name: 'Web Development', level: 80, icon: '🌐' },
+    { name: 'Git & GitHub', level: 85, icon: '🔧' },
+    { name: 'Linux', level: 85, icon: '🐧' }
   ];
   
   const projects = [
@@ -120,9 +136,30 @@
   ];
 
   const certifications = [
-    { name: 'CompTIA Security+', status: 'Planned', date: '2024' },
-    { name: 'Certified Ethical Hacker (CEH)', status: 'In Progress', date: '2024' },
-    { name: 'Google Cybersecurity Certificate', status: 'Completed', date: '2023' }
+    {
+      name: 'Internet of Things',
+      issuer: 'NPTEL (IIT Kharagpur)',
+      status: 'Top 5% Topper',
+      date: 'Oct 2024',
+      url: 'https://archive.nptel.ac.in/content/noc/NOC24/SEM2/Ecertificates/106/noc24-cs115/Course/NPTEL24CS115S75990019303945964.pdf',
+      description: 'NPTEL (IIT Kharagpur) — Internet of Things'
+    },
+    {
+      name: 'Privacy and Security in Online Social Media',
+      issuer: 'NPTEL (IIT Hyderabad)',
+      status: '',
+      date: 'Apr 2024',
+      url: 'https://archive.nptel.ac.in/content/noc/NOC24/SEM1/Ecertificates/106/noc24-cs04/Course/NPTEL24CS04S116010009630419719.pdf',
+      description: 'NPTEL (IIT Hyderabad) — Privacy and Security in Online Social Media'
+    },
+    {
+      name: 'Cyber Security and Privacy',
+      issuer: 'NPTEL (IIT Madras)',
+      status: 'Top 5% Topper',
+      date: 'Oct 2023',
+      url: 'https://archive.nptel.ac.in/content/noc/NOC23/SEM2/Ecertificates/106/noc23-cs127/Course/NPTEL23CS127S64010070520111471.pdf',
+      description: 'NPTEL (IIT Madras) — Cyber Security and Privacy'
+    }
   ];
 
   const tools = [
@@ -408,7 +445,7 @@
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
         <span class="widget-icon">💻</span>
-        <span class="widget-title">Security Skills</span>
+        <span class="widget-title">Technical Skills</span>
       </div>
       <div class="skills-grid">
         {#each skills as skill}
@@ -475,8 +512,8 @@
               <div class="education-line"></div>
             </div>
             <div class="education-coursework">
-              {#each edu.coursework as course}
-                <span class="course-tag">{course}</span>
+              {#each edu.coursework as course, i}
+                <span class="course-tag">{course}</span>{#if i < edu.coursework.length - 1}&nbsp;{/if}
               {/each}
             </div>
           </div>
@@ -497,8 +534,16 @@
           <div class="certification-item">
             <div class="certification-header">
               <span class="certification-icon">📜</span>
-              <span class="certification-name">{cert.name}</span>
-              <span class="certification-status">{cert.status}</span>
+              <span class="certification-name">
+                <a href={cert.url} target="_blank" rel="noopener noreferrer">{cert.name} ↗</a>
+              </span>
+            </div>
+            <div class="certification-meta">
+              <span class="cert-badge issuer">{cert.issuer}</span>
+              <span class="cert-badge date">{cert.date}</span>
+              {#if cert.status}
+                <span class="cert-badge status">{cert.status}</span>
+              {/if}
             </div>
             <p class="certification-description">{cert.description}</p>
           </div>
@@ -616,7 +661,7 @@
   <footer class="footer">
     <div class="widget footer-widget" use:gradientFollow>
       <div class="footer-content">
-        <p class="mono"> 2025 • Built with SvelteKit • Deployed on Vercel</p>
+        <p class="mono"> 2025 • MHMD ASLAM • All Rights Reserved</p>
         <div class="footer-status">
           <div class="status-indicator status-secure">
             <span>🔒</span>
@@ -912,6 +957,58 @@
     gap: 0.4rem;
     align-self: flex-start; /* keep link width to content */
   }
+
+  /* Certifications: improved layout and badges */
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .certification-item {
+    border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .certification-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+  }
+
+  .certification-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .certification-name a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .certification-name a:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .certification-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .cert-badge {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border-secondary);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+  }
+  .cert-badge.issuer {}
+  .cert-badge.date { color: var(--text-muted); }
+  .cert-badge.status { color: var(--accent-primary); border-color: var(--accent-primary); }
 
   .footer {
     margin-top: 2rem;
