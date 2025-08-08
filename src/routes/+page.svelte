@@ -264,6 +264,7 @@
 <svelte:head>
   <title>CyberSec Portfolio - BTech Computer Science</title>
   <meta name="description" content="CyberSecurity portfolio of a BTech Computer Science student specializing in penetration testing, network security, and digital forensics." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
 <div class="portfolio-container">
@@ -742,11 +743,18 @@
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-size: clamp(1.25rem, 0.9rem + 2.4vw, 3rem);
     font-weight: 700;
     margin-bottom: 1rem;
     font-family: 'JetBrains Mono', monospace;
+    line-height: clamp(1.1, 1 + 0.4vw, 1.3);
+    letter-spacing: clamp(0.5px, 0.25vw, 2px);
+    word-break: normal; /* don't break inside words */
+    overflow-wrap: normal; /* keep words intact */
+    hyphens: none;
+    max-width: 100%;
   }
+  .hero-title span { font-size: inherit; }
 
   .hero-subtitle {
     font-size: 1.2rem;
@@ -757,7 +765,7 @@
   .hero-stats {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: clamp(1rem, 1vw + 1rem, 3rem);
     flex-wrap: wrap;
   }
 
@@ -766,7 +774,7 @@
   }
 
   .stat-value {
-    font-size: 2rem;
+    font-size: clamp(1.25rem, 0.8rem + 1.8vw, 2rem);
     font-weight: 700;
     color: var(--accent-primary);
     font-family: 'JetBrains Mono', monospace;
@@ -1015,8 +1023,8 @@
   }
   .qr-image {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: min(60vw, 300px);
+    height: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
   }
@@ -1046,10 +1054,7 @@
     .qr-card {
       max-width: 380px;
     }
-    .qr-image {
-      width: 220px;
-      height: 220px;
-    }
+    .qr-image { width: min(70vw, 220px); height: auto; }
   }
   @media (max-width: 640px) {
     .contact-side {
@@ -1058,10 +1063,7 @@
     .qr-card {
       max-width: 100%;
     }
-    .qr-image {
-      width: 200px;
-      height: 200px;
-    }
+    .qr-image { width: min(80vw, 200px); height: auto; }
   }
 
   /* Improved Send button */
@@ -1326,6 +1328,55 @@
   /* issuer badge inherits default .cert-badge styles */
   .cert-badge.date { color: var(--text-muted); }
   .cert-badge.status { color: var(--accent-primary); border-color: var(--accent-primary); }
+
+  /* Education: ensure coursework tags wrap and never overflow */
+  .education-item { max-width: 100%; overflow: hidden; }
+  .education-header { min-width: 0; }
+  .education-coursework {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+  .education-coursework .course-tag {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal; /* allow wrapping within long course names */
+    word-break: keep-all;
+    overflow-wrap: anywhere; /* break extremely long tokens if needed */
+  }
+
+  /* Achievements: prevent overflow on small screens */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .achievement-item {
+    border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden; /* prevent tiny overflows on narrow viewports */
+  }
+  .achievement-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    min-width: 0; /* enable flex children to shrink */
+  }
+  .achievement-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere; /* allow long words to wrap safely */
+  }
+  .achievement-description { overflow-wrap: anywhere; }
+
+  @media (max-width: 420px) {
+    .achievements-grid { grid-template-columns: 1fr; }
+  }
 
   .footer {
     margin-top: 2rem;
