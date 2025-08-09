@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import { onMount, onDestroy } from 'svelte';
+  import { dev } from '$app/environment';
   import { injectAnalytics } from '@vercel/analytics/sveltekit';
   /** @type {any} */
   let vantaEffect;
@@ -58,8 +59,10 @@
   }
 
   onMount(async () => {
-    // Inject Vercel Analytics in browser only
-    try { injectAnalytics(); } catch {}
+    // Inject Vercel Analytics only in dev to avoid inline-script CSP in production
+    if (dev) {
+      try { injectAnalytics(); } catch {}
+    }
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
     await loadScript('https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js');
     vantaEffect = window.VANTA.NET && window.VANTA.NET({
