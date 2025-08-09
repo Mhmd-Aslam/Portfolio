@@ -209,7 +209,8 @@
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '' // honeypot
   };
 
   let formSubmitted = false;
@@ -238,7 +239,7 @@
         return; // keep values for user to correct
       }
       formSubmitted = true;
-      contactForm = { name: '', email: '', subject: '', message: '' };
+      contactForm = { name: '', email: '', subject: '', message: '', website: '' };
       setTimeout(() => {
         formSubmitted = false;
       }, 3000);
@@ -636,6 +637,11 @@
       </div>
       <div class="contact-grid">
         <form on:submit={handleContactSubmit}>
+          <!-- Honeypot field: hidden from users, visible to bots -->
+          <div style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+            <label for="website">Website (leave empty)</label>
+            <input type="text" id="website" name="website" bind:value={contactForm.website} tabindex="-1" autocomplete="off" />
+          </div>
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" bind:value={contactForm.name} />

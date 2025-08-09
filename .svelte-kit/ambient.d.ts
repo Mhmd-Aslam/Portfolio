@@ -27,6 +27,7 @@
  */
 declare module '$env/static/private' {
 	export const RESEND_API_KEY: string;
+	export const CONTACT_ALLOWED_ORIGINS: string;
 	export const ALLUSERSPROFILE: string;
 	export const ANDROID_HOME: string;
 	export const APPDATA: string;
@@ -134,6 +135,7 @@ declare module '$env/static/public' {
 declare module '$env/dynamic/private' {
 	export const env: {
 		RESEND_API_KEY: string;
+		CONTACT_ALLOWED_ORIGINS: string;
 		ALLUSERSPROFILE: string;
 		ANDROID_HOME: string;
 		APPDATA: string;
