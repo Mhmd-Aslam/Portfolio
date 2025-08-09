@@ -1,6 +1,6 @@
 {
-  "name": "cybersec-portfolio",
-  "version": "0.0.1",
+  "name": "mhmdaslam-portfolio",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "prebuild": "shx echo prebuild",

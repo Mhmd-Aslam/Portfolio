@@ -282,7 +282,7 @@
 
 <svelte:head>
   <title>Mhmd Aslam Portfolio</title>
-  <meta name="description" content="CyberSecurity portfolio of a BTech Computer Science student specializing in penetration testing, network security, and digital forensics." />
+  <meta name="description" content="Portfolio of Mhmd Aslam " />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/images/Alogo.png" sizes="any" />
   <link rel="apple-touch-icon" href="/images/Alogo.png" />
