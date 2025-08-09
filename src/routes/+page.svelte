@@ -262,9 +262,11 @@
 </script>
 
 <svelte:head>
-  <title>CyberSec Portfolio - BTech Computer Science</title>
+  <title>Mhmd Aslam Portfolio</title>
   <meta name="description" content="CyberSecurity portfolio of a BTech Computer Science student specializing in penetration testing, network security, and digital forensics." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/images/Alogo.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/images/Alogo.png" />
 </svelte:head>
 
 <div class="portfolio-container">
@@ -274,6 +276,7 @@
       <!-- Status Header -->
       <div class="hero-header">
         <div class="status-bar">
+          <img src="/images/Alogo.png" alt="Logo" class="brand-logo" />
           <div class="status-group">
             <div class="status-indicator status-online">
               <div class="pulse-dot"></div>
@@ -768,8 +771,31 @@
     gap: 0.75rem;
     flex-wrap: wrap;
     min-width: 0; /* allow children to shrink */
+    justify-content: space-between; /* push end items (time) to the right */
   }
   .hero-header > * { min-width: 0; }
+  /* Status bar row with time on the right */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+    min-width: 0;
+  }
+  .status-group { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; min-width: 0; }
+  .time-display { margin-left: auto; white-space: nowrap; }
+  .brand-logo {
+    height: clamp(28px, 3.2vw, 44px);
+    width: auto;
+    border-radius: 4px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .brand-logo { height: 56px; }
+  }
+  /* Removed unused generic time selectors; using .status-bar/.time-display rules above */
 
   .hero-subtitle {
     overflow-wrap: anywhere; /* allow general text to wrap to avoid overflow */
@@ -984,7 +1010,10 @@
   .contact-grid form, .contact-grid aside { min-width: 0; }
   .contact-grid input,
   .contact-grid textarea,
-  .contact-grid select {
+  /* (Removed unused select to avoid lint warning) */
+  /* .contact-grid select, */
+  .contact-grid textarea,
+  .contact-grid input {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -1272,6 +1301,7 @@
     box-sizing: border-box;
     max-width: 100%;
     overflow: hidden; /* avoid tiny horizontal overflow on small screens */
+    min-height: clamp(240px, 18vw, 360px); /* keep vertical-rectangular feel on desktops */
   }
 
   .project-card:hover {
@@ -1352,6 +1382,17 @@
   @media (max-width: 380px) {
     .projects-section .grid.grid-3 {
       grid-template-columns: 1fr;
+    }
+  }
+  /* Wider cards on larger screens, like earlier */
+  @media (min-width: 1024px) {
+    .projects-section .grid.grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+  @media (min-width: 1400px) {
+    .projects-section .grid.grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     }
   }
 
