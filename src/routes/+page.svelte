@@ -749,12 +749,44 @@
     font-family: 'JetBrains Mono', monospace;
     line-height: clamp(1.1, 1 + 0.4vw, 1.3);
     letter-spacing: clamp(0.5px, 0.25vw, 2px);
-    word-break: normal; /* don't break inside words */
+    word-break: keep-all; /* don't break inside words */
     overflow-wrap: normal; /* keep words intact */
     hyphens: none;
     max-width: 100%;
   }
   .hero-title span { font-size: inherit; }
+
+  /* Ensure hero container and header don't cause overflow */
+  .hero-widget {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .hero-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    min-width: 0; /* allow children to shrink */
+  }
+  .hero-header > * { min-width: 0; }
+
+  .hero-subtitle {
+    overflow-wrap: anywhere; /* allow general text to wrap to avoid overflow */
+    max-width: 100%;
+  }
+
+  /* Extra-small devices: reduce hero text sizes to prevent overflow without breaking words */
+  @media (max-width: 360px) {
+    .hero-title {
+      font-size: clamp(1.05rem, 0.9rem + 2vw, 2.25rem);
+      letter-spacing: 0.5px;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
 
   .hero-subtitle {
     font-size: 1.2rem;
@@ -934,6 +966,32 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
+
+  /* Contact grid responsive layout */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1rem;
+    max-width: 100%;
+  }
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr minmax(260px, 420px);
+      gap: 1.25rem;
+    }
+  }
+  .contact-grid form, .contact-grid aside { min-width: 0; }
+  .contact-grid input,
+  .contact-grid textarea,
+  .contact-grid select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Avoid accidental global horizontal scroll from shadows/paddings */
+  .portfolio-container { overflow-x: hidden; }
 
   /* Contact form inputs */
   .contact-grid textarea {
@@ -1211,6 +1269,9 @@
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden; /* avoid tiny horizontal overflow on small screens */
   }
 
   .project-card:hover {
@@ -1230,12 +1291,14 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
+    overflow-wrap: anywhere;
   }
 
   .project-description {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.6;
+    overflow-wrap: anywhere;
   }
 
   .project-tech {
@@ -1243,6 +1306,7 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    min-width: 0;
   }
 
   .tech-tag {
@@ -1275,6 +1339,20 @@
     align-items: center;
     gap: 0.4rem;
     align-self: flex-start; /* keep link width to content */
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  /* Make 3-col project grid responsive and non-overflowing */
+  .projects-section .grid.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 380px) {
+    .projects-section .grid.grid-3 {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Certifications: improved layout and badges */
