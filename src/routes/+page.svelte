@@ -215,7 +215,15 @@
   let formSubmitted = false;
   let formLoading = false;
 
-  const handleContactSubmit = async (e) => {
+  // Validation and counters
+  const MESSAGE_MAX = 1000;
+  const MESSAGE_MIN = 10;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+  $: isEmailValid = emailRegex.test((contactForm.email || '').trim());
+  $: messageLen = (contactForm.message || '').trim().length;
+  $: isMessageLongEnough = messageLen >= MESSAGE_MIN;
+
+  const handleContactSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     formLoading = true;
     
@@ -232,8 +240,8 @@
   };
 
   // Svelte action for tracking mouse and updating gradient
-  function gradientFollow(node) {
-    function setGradient(e) {
+  function gradientFollow(node: HTMLElement) {
+    function setGradient(e: MouseEvent) {
       const rect = node.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -620,24 +628,51 @@
         <form on:submit={handleContactSubmit}>
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value={contactForm.name} />
+            <input type="text" id="name" name="name" bind:value={contactForm.name} />
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value={contactForm.email} />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              bind:value={contactForm.email}
+              aria-invalid={!isEmailValid}
+              class:is-invalid={!isEmailValid && contactForm.email}
+              placeholder="you@example.com"
+            />
+            {#if contactForm.email && !isEmailValid}
+              <small class="input-hint">Please enter a valid email address.</small>
+            {/if}
           </div>
           <div class="form-group">
             <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" value={contactForm.subject} />
+            <input type="text" id="subject" name="subject" bind:value={contactForm.subject} />
           </div>
           <div class="form-group">
             <label for="message">Message:</label>
-            <textarea id="message" name="message" value={contactForm.message} />
+            <textarea
+              id="message"
+              name="message"
+              bind:value={contactForm.message}
+              minlength={MESSAGE_MIN}
+              maxlength={MESSAGE_MAX}
+              rows="5"
+            ></textarea>
+            <div class="char-counter" aria-live="polite">{messageLen}/{MESSAGE_MAX}</div>
+            {#if contactForm.message && !isMessageLongEnough}
+              <small class="input-hint">Minimum {MESSAGE_MIN} characters required.</small>
+            {/if}
           </div>
           <button
             type="submit"
             class="btn-send"
-            disabled={formLoading}
+            disabled={
+              formLoading ||
+              !contactForm.message || !contactForm.message.trim().length ||
+              !isEmailValid ||
+              !isMessageLongEnough
+            }
             aria-busy={formLoading}
           >
             {#if formLoading}
