@@ -1,10 +1,15 @@
 import type { Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
 
 export const handle: Handle = async ({ event, resolve }) => {
   const response = await resolve(event);
 
-  // Content Security Policy (relaxed in dev for Vite HMR and external scripts)
+  // Content Security Policy
+  // - dev: relaxed for HMR and debugging
+  // - preview (Vercel): allow inline and vercel.live helpers, keep domains explicit
+  // - production: strict
+  const isPreview = env.VERCEL_ENV === 'preview';
   const csp = dev
     ? [
         "default-src 'self' https:",
@@ -14,6 +19,19 @@ export const handle: Handle = async ({ event, resolve }) => {
         "font-src 'self' fonts.gstatic.com",
         "img-src 'self' data: blob:",
         "connect-src 'self' http: https: ws:",
+        "frame-ancestors 'none'",
+        "base-uri 'none'"
+      ].join('; ')
+    : isPreview
+    ? [
+        "default-src 'self'",
+        // Allow inline for Vercel preview helpers and Svelte runtime on preview if needed
+        "script-src 'self' 'unsafe-inline' cdnjs.cloudflare.com cdn.jsdelivr.net vercel.live",
+        "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+        "font-src 'self' fonts.gstatic.com",
+        "img-src 'self' data: blob:",
+        // Preview may call vercel.live endpoints
+        "connect-src 'self' https:",
         "frame-ancestors 'none'",
         "base-uri 'none'"
       ].join('; ')
