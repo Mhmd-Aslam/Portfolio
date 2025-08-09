@@ -1,10 +1,14 @@
 <script>
   import '../app.css';
   import { onMount, onDestroy } from 'svelte';
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
   /** @type {any} */
   let vantaEffect;
   /** @type {any} */
   let vantaBgEl;
+
+  // Inject Vercel Analytics (no-op during dev/blocked by content blockers)
+  injectAnalytics();
 
   /**
    * @param {string} src
