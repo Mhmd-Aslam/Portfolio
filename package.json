@@ -5,6 +5,7 @@
   "scripts": {
     "prebuild": "shx echo prebuild",
     "build": "node ./node_modules/vite/bin/vite.js build",
+    "vercel-build": "svelte-kit build",
     "dev": "svelte-kit dev",
     "preview": "svelte-kit preview",
     "postinstall": "svelte-kit sync || true"
@@ -18,9 +19,7 @@
     "vite": "^4.4.2"
   },
   "type": "module",
-  "engines": {
-    "node": ">=18"
-  },
+  "engines": { "node": ">=20 <23" },
   "dependencies": {
     "resend": "^6.0.1"
   }
