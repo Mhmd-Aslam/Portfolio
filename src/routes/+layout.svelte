@@ -86,10 +86,12 @@
 </script>
 
 <div id="vanta-bg" bind:this={vantaBgEl} style="position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(135deg,#181c2f 0%,#1a263a 100%);"></div>
-<main>
-  <slot />
-
-</main>
+<div class="scale-desktop">
+  <main>
+    <slot />
+  </main>
+  
+</div>
 
 <style>
   main {
@@ -97,6 +99,42 @@
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+  }
+
+  /* Desktop-only global scale without affecting mobile */
+  .scale-desktop {
+    /* default (mobile/tablet) - no scaling */
+    display: block; /* avoid empty ruleset & ensure normal flow */
+  }
+
+  /* Prefer zoom on desktop to also scale layout box (fixes extra scroll) */
+  @media (min-width: 1025px) {
+    @supports (zoom: 1) {
+      .scale-desktop {
+        zoom: 0.55; /* affects layout size so scroll ends exactly at content */
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+    /* Fallback for browsers without zoom support (e.g., some Firefox) */
+    @supports not (zoom: 1) {
+      .scale-desktop {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%) scale(0.55);
+        transform-origin: top center;
+        width: calc(100% / 0.55);
+        margin: 0;
+        overflow: visible;
+        min-height: auto;
+        will-change: transform;
+      }
+    }
+  }
+
+  /* Prevent horizontal scroll due to pre-scale width expansion */
+  :global(html, body) {
+    overflow-x: hidden;
   }
 
   @media (max-width: 768px) {
