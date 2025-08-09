@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "node ./node_modules/@sveltejs/kit/svelte-kit.js build",
+    "prebuild": "chmod +x node_modules/.bin/svelte-kit node_modules/.bin/vite || true",
+    "build": "svelte-kit build",
     "dev": "svelte-kit dev",
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/adapter-vercel": "^3.1.0",
     "@sveltejs/kit": "^1.20.4",
     "svelte": "^4.0.5",
     "vite": "^4.4.2"
