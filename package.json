@@ -6,8 +6,9 @@
     "prebuild": "shx echo prebuild",
     "build": "node ./node_modules/vite/bin/vite.js build",
     "vercel-build": "svelte-kit build",
-    "dev": "svelte-kit dev",
-    "preview": "svelte-kit preview",
+    "dev": "node ./node_modules/vite/bin/vite.js",
+    "preview": "node ./node_modules/vite/bin/vite.js preview",
+    "preview:prod": "node ./node_modules/vite/bin/vite.js build && node ./node_modules/vite/bin/vite.js preview",
     "postinstall": "svelte-kit sync || true"
   },
   "devDependencies": {

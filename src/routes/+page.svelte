@@ -223,7 +223,7 @@
   $: messageLen = (contactForm.message || '').trim().length;
   $: isMessageLongEnough = messageLen >= MESSAGE_MIN;
 
-  const handleContactSubmit = async (e: SubmitEvent) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
     formLoading = true;
     
@@ -240,8 +240,8 @@
   };
 
   // Svelte action for tracking mouse and updating gradient
-  function gradientFollow(node: HTMLElement) {
-    function setGradient(e: MouseEvent) {
+  function gradientFollow(node) {
+    function setGradient(e) {
       const rect = node.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
