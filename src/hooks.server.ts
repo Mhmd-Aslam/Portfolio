@@ -32,6 +32,8 @@ export const handle: Handle = async ({ event, resolve }) => {
         "img-src 'self' data: blob:",
         // Preview may call vercel.live endpoints
         "connect-src 'self' https:",
+        // Allow preview toolbar iframe
+        "frame-src 'self' vercel.live",
         "frame-ancestors 'none'",
         "base-uri 'none'"
       ].join('; ')
