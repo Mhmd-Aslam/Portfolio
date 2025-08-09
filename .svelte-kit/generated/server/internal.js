@@ -6,7 +6,7 @@ import { set_private_env, set_public_env } from '../../../node_modules/@sveltejs
 
 export const options = {
 	app_template_contains_nonce: false,
-	csp: {"mode":"auto","directives":{"upgrade-insecure-requests":false,"block-all-mixed-content":false},"reportOnly":{"upgrade-insecure-requests":false,"block-all-mixed-content":false}},
+	csp: {"mode":"hash","directives":{"default-src":["'self'","https:"],"frame-src":["'self'","vercel.live"],"connect-src":["'self'","http:","https:","ws:"],"font-src":["'self'","fonts.gstatic.com"],"img-src":["'self'","data:","blob:"],"script-src":["'self'","'unsafe-inline'","'unsafe-eval'","blob:","cdnjs.cloudflare.com","cdn.jsdelivr.net","vercel.live"],"style-src":["'self'","'unsafe-inline'","fonts.googleapis.com"],"base-uri":["'none'"],"frame-ancestors":["'none'"],"upgrade-insecure-requests":false,"block-all-mixed-content":false},"reportOnly":{"upgrade-insecure-requests":false,"block-all-mixed-content":false}},
 	csrf_check_origin: true,
 	track_server_fetches: false,
 	embedded: false,
