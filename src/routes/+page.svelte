@@ -225,18 +225,28 @@
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
-    formLoading = true;
-    
-    // Simulate form submission
-    setTimeout(() => {
-      formLoading = false;
+    try {
+      formLoading = true;
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(contactForm)
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.ok) {
+        console.error('Contact send failed', json);
+        return; // keep values for user to correct
+      }
       formSubmitted = true;
       contactForm = { name: '', email: '', subject: '', message: '' };
-      
       setTimeout(() => {
         formSubmitted = false;
       }, 3000);
-    }, 1500);
+    } catch (err) {
+      console.error('Contact submit error', err);
+    } finally {
+      formLoading = false;
+    }
   };
 
   // Svelte action for tracking mouse and updating gradient
