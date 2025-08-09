@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "dev": "vite dev",
-    "preview": "vite preview"
+    "build": "svelte-kit build",
+    "dev": "svelte-kit dev",
+    "preview": "svelte-kit preview"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
