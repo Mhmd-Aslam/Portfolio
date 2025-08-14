@@ -1559,3 +1559,35 @@ body {
   .hero-avatar .avatar-image { width: 500px; height: 500px; }
 }
 
+/*
+  Ultra‑wide viewport physical scaling
+  - When screens are very wide, apply a container transform scale to emulate ~browser zoom
+  - Keeps layout and dynamics unchanged while increasing perceived size
+*/
+@media (min-width: 1920px) {
+  .portfolio-container {
+    transform: scale(1.25);
+    transform-origin: top center;
+    /* compensate width so content still fills viewport */
+    width: calc(100vw / 1.25);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 2560px) {
+  .portfolio-container {
+    transform: scale(1.45);
+    transform-origin: top center;
+    width: calc(100vw / 1.45);
+  }
+}
+
+@media (min-width: 3440px) {
+  .portfolio-container {
+    transform: scale(1.7);
+    transform-origin: top center;
+    width: calc(100vw / 1.7);
+  }
+}
+
