@@ -1519,9 +1519,22 @@ body {
 }
 
 
-/* Fluid, natural scaling on wide screens (no step jumps, no transforms) */
-html {
-  /* 16px at ~1280px and below, grows smoothly with viewport, caps at 22px on very wide */
-  font-size: clamp(16px, 0.3vw + 12px, 22px);
+/* Fluid, natural 1x→1.7x scaling tied to viewport width (emulates ~170% zoom at ~1920px)
+   Prefer CSS zoom for crisp text; fallback to transform for browsers without zoom support */
+.portfolio-container {
+  /* 1.0 at 1280px → 1.7 at 1920px, clamped */
+  --scale: clamp(1, calc(1 + ((100vw - 1280px) / 640) * 0.7), 1.7);
+  zoom: var(--scale);
+}
+
+/* Fallback for browsers that don't support CSS zoom (e.g., Firefox) */
+@supports not (zoom: 1) {
+  .portfolio-container {
+    transform: scale(var(--scale));
+    transform-origin: top center;
+    width: calc(100vw / var(--scale));
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
