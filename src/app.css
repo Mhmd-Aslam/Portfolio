@@ -1362,16 +1362,13 @@ body {
   box-shadow: 0 4px 15px rgba(255, 0, 102, 0.3);
 }
 
-/* Specific styling for the BTech tag in the hero card (purple theme) */
 .role-tag.tertiary.btech {
-  background: linear-gradient(135deg, #a26dff, rgba(141, 100, 231, 0.85));
+  background: linear-gradient(135deg, #a26dff, rgba(162, 109, 255, 0.95));
   color: var(--bg-primary);
-  border-color: #8d64e7; /* unify with gradient end */
-  box-shadow: 0 4px 15px rgba(162, 109, 255, 0.35); /* unify with gradient start */
-  transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  border-color: #a26dff;
+  box-shadow: 0 4px 18px rgba(162, 109, 255, 0.35);
 }
 
-/* Polished hover specifically for the BTech tag */
 .role-tag.tertiary.btech:hover {
   background: linear-gradient(135deg, #b289ff, rgba(162, 109, 255, 0.95));
   border-color: #a26dff;
@@ -1381,29 +1378,6 @@ body {
 .role-tag:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Global scaling for larger screens: scale site by viewport height so hero card appears consistently filled
-   Keeps mobile unchanged. Leverages svh to avoid browser UI chrome issues. */
-@media (min-width: 768px) {
-  html {
-    /* Default: scale with smaller viewport side to react to aspect ratio */
-    font-size: clamp(16px, 1.6vmin, 20px);
-  }
-}
-
-/* Very tall (portrait-ish) desktop screens: prefer height-based scaling */
-@media (min-width: 768px) and (max-aspect-ratio: 4/5) {
-  html {
-    font-size: clamp(16px, 2.2svh, 20px);
-  }
-}
-
-/* Ultra-wide desktop screens: also tie to height so text doesn't shrink too much */
-@media (min-width: 768px) and (min-aspect-ratio: 21/9) {
-  html {
-    font-size: clamp(16px, 1.9svh, 20px);
-  }
 }
 
 .hero-location {
@@ -1544,4 +1518,21 @@ body {
   /* border and other styles remain unchanged */
 }
 
+
+/*
+  Ultra-wide screen scaling
+  - Increase base font-size on very large viewports so the UI doesn't look tiny
+  - Keeps existing layout/styles intact since most sizes use rem
+*/
+@media (min-width: 1600px) {
+  html { font-size: 17px; }
+}
+
+@media (min-width: 1920px) {
+  html { font-size: 18px; }
+}
+
+@media (min-width: 2300px) {
+  html { font-size: 19px; }
+}
 
