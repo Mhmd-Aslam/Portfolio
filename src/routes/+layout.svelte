@@ -114,11 +114,11 @@
     display: block; /* avoid empty ruleset & ensure normal flow */
   }
 
-  /* Prefer zoom on desktop to also scale layout box (fixes extra scroll) */
+  /* Remove desktop downscaling to restore 1:1 rendering on wide screens */
   @media (min-width: 1025px) {
     @supports (zoom: 1) {
       .scale-desktop {
-        zoom: 0.55; /* affects layout size so scroll ends exactly at content */
+        zoom: 1; /* reset to 1:1 */
         width: 100%;
         margin: 0 auto;
       }
@@ -126,15 +126,15 @@
     /* Fallback for browsers without zoom support (e.g., some Firefox) */
     @supports not (zoom: 1) {
       .scale-desktop {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%) scale(0.55);
-        transform-origin: top center;
-        width: calc(100% / 0.55);
-        margin: 0;
+        position: static;
+        left: auto;
+        transform: none; /* reset to 1:1 */
+        transform-origin: initial;
+        width: 100%;
+        margin: 0 auto;
         overflow: visible;
         min-height: auto;
-        will-change: transform;
+        will-change: auto;
       }
     }
   }

@@ -950,6 +950,26 @@
     border-radius: 10px;
   }
 
+  /* Fix tiny scaling on 16:9 by scaling with vmin (height-aware) on wide screens */
+  @media (min-aspect-ratio: 16/9) and (min-width: 1024px) {
+    .hero-main { gap: 3rem; }
+    .hero-title {
+      font-size: clamp(2rem, 1.2rem + 3vmin, 3.75rem);
+    }
+    .hero-title span { font-size: inherit; }
+    .hero-avatar .avatar-image {
+      width: clamp(180px, 22vmin, 360px);
+      height: clamp(180px, 22vmin, 360px);
+    }
+    .role-tag {
+      font-size: clamp(0.9rem, 0.6rem + 0.8vmin, 1.1rem);
+    }
+    .stat-value {
+      font-size: clamp(1.6rem, 1rem + 2vmin, 2.6rem);
+    }
+    .hero-content { padding: 2.25rem 2rem; }
+  }
+
   .main-grid {
     margin-bottom: 1rem;
   }
