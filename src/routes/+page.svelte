@@ -334,7 +334,7 @@
               <div class="hero-roles">
                 <span class="role-tag primary">🛡️ CyberSecurity Student</span>
                 <span class="role-tag secondary">💻 Creative Developer</span>
-                <span class="role-tag tertiary">🎓 BTech Computer Science</span>
+                <span class="role-tag tertiary btech">🎓 BTech Computer Science</span>
               </div>
               
               <p class="hero-location">

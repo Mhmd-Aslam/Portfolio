@@ -1362,9 +1362,26 @@ body {
   box-shadow: 0 4px 15px rgba(255, 0, 102, 0.3);
 }
 
+/* Specific styling for the BTech tag in the hero card (purple theme) */
+.role-tag.tertiary.btech {
+  background: linear-gradient(135deg, #a26dff, rgba(141, 100, 231, 0.85));
+  color: var(--bg-primary);
+  border-color: #683cb5;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
 .role-tag:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Global scaling for larger screens: scale site by viewport height so hero card appears consistently filled
+   Keeps mobile unchanged. Leverages svh to avoid browser UI chrome issues. */
+@media (min-width: 768px) {
+  html {
+    /* Adjust the middle value if you want tighter/looser scaling */
+    font-size: clamp(20px, 1.9svh, 18px);
+  }
 }
 
 .hero-location {
