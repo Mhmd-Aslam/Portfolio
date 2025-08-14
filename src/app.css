@@ -1366,8 +1366,16 @@ body {
 .role-tag.tertiary.btech {
   background: linear-gradient(135deg, #a26dff, rgba(141, 100, 231, 0.85));
   color: var(--bg-primary);
-  border-color: #683cb5;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+  border-color: #8d64e7; /* unify with gradient end */
+  box-shadow: 0 4px 15px rgba(162, 109, 255, 0.35); /* unify with gradient start */
+  transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+/* Polished hover specifically for the BTech tag */
+.role-tag.tertiary.btech:hover {
+  background: linear-gradient(135deg, #b289ff, rgba(162, 109, 255, 0.95));
+  border-color: #a26dff;
+  box-shadow: 0 8px 24px rgba(162, 109, 255, 0.45);
 }
 
 .role-tag:hover {
