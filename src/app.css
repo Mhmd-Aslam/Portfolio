@@ -1519,75 +1519,9 @@ body {
 }
 
 
-/*
-  Ultra-wide screen scaling
-  - Increase base font-size on very large viewports so the UI doesn't look tiny
-  - Keeps existing layout/styles intact since most sizes use rem
-*/
-@media (min-width: 1600px) {
-  html { font-size: 17px; }
-}
-
-@media (min-width: 1920px) {
-  html { font-size: 19px; }
-}
-
-@media (min-width: 2300px) {
-  html { font-size: 20px; }
-}
- 
-/* Extra‑ultra wide screens */
-@media (min-width: 2560px) {
-  html { font-size: 21px; }
-}
-
-@media (min-width: 3200px) {
-  html { font-size: 22px; }
-}
-
-/*
-  Targeted scaling for hero elements on very wide screens
-  (keeps overall layout the same while avoiding tiny hero visuals)
-*/
-@media (min-width: 1920px) {
-  .hero-title { font-size: 3.6rem; }
-  .hero-avatar .avatar-image { width: 420px; height: 420px; }
-}
-
-@media (min-width: 2560px) {
-  .hero-title { font-size: 4.2rem; }
-  .hero-avatar .avatar-image { width: 500px; height: 500px; }
-}
-
-/*
-  Ultra‑wide viewport physical scaling
-  - When screens are very wide, apply a container transform scale to emulate ~browser zoom
-  - Keeps layout and dynamics unchanged while increasing perceived size
-*/
-@media (min-width: 1920px) {
-  .portfolio-container {
-    transform: scale(1.25);
-    transform-origin: top center;
-    /* compensate width so content still fills viewport */
-    width: calc(100vw / 1.25);
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (min-width: 2560px) {
-  .portfolio-container {
-    transform: scale(1.45);
-    transform-origin: top center;
-    width: calc(100vw / 1.45);
-  }
-}
-
-@media (min-width: 3440px) {
-  .portfolio-container {
-    transform: scale(1.7);
-    transform-origin: top center;
-    width: calc(100vw / 1.7);
-  }
+/* Fluid, natural scaling on wide screens (no step jumps, no transforms) */
+html {
+  /* 16px at ~1280px and below, grows smoothly with viewport, caps at 22px on very wide */
+  font-size: clamp(16px, 0.3vw + 12px, 22px);
 }
 
