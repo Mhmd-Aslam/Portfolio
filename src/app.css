@@ -1387,8 +1387,22 @@ body {
    Keeps mobile unchanged. Leverages svh to avoid browser UI chrome issues. */
 @media (min-width: 768px) {
   html {
-    /* Adjust the middle value if you want tighter/looser scaling */
-    font-size: clamp(20px, 1.9svh, 18px);
+    /* Default: scale with smaller viewport side to react to aspect ratio */
+    font-size: clamp(16px, 1.6vmin, 20px);
+  }
+}
+
+/* Very tall (portrait-ish) desktop screens: prefer height-based scaling */
+@media (min-width: 768px) and (max-aspect-ratio: 4/5) {
+  html {
+    font-size: clamp(16px, 2.2svh, 20px);
+  }
+}
+
+/* Ultra-wide desktop screens: also tie to height so text doesn't shrink too much */
+@media (min-width: 768px) and (min-aspect-ratio: 21/9) {
+  html {
+    font-size: clamp(16px, 1.9svh, 20px);
   }
 }
 
