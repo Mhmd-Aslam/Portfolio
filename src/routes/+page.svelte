@@ -79,6 +79,7 @@
       tech: ["JavaScript", "Security", "Encryption"],
       threat_level: "HIGH",
       link: "https://github.com/Mhmd-Aslam/Obscura",
+      live_link: "https://obscura-sec.vercel.app",
     },
     {
       title: "Fezla-Crypter",
@@ -572,9 +573,20 @@
                 <span class="tech-tag">{tech}</span>
               {/each}
             </div>
-            <a href={project.link} target="_blank" class="project-link"
-              >🔗 View Code</a
-            >
+            <div class="project-links">
+              <a href={project.link} target="_blank" class="project-link">
+                🔗 View Code
+              </a>
+              {#if project.live_link}
+                <a
+                  href={project.live_link}
+                  target="_blank"
+                  class="project-link live-link"
+                >
+                  🌐 Live Demo
+                </a>
+              {/if}
+            </div>
           </div>
         {/each}
       </div>
@@ -1186,6 +1198,48 @@
   }
   .experience-footer {
     margin-top: 0.75rem;
+  }
+
+  /* Project Links Styling */
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-link {
+    flex: 1;
+    min-width: fit-content;
+    text-align: center;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid var(--border-secondary);
+    border-radius: 8px;
+    background: rgba(66, 12, 107, 0.15);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .project-link:hover {
+    border-color: var(--accent-primary);
+    background: rgba(66, 12, 107, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 12, 107, 0.3);
+  }
+
+  .project-link.live-link {
+    background: rgba(0, 94, 0, 0.15);
+    border-color: var(--accent-primary);
+  }
+
+  .project-link.live-link:hover {
+    background: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+  }
+
+  .experience-footer {
     padding-top: 0.5rem;
     border-top: 1px dashed var(--border-secondary);
     display: flex;
