@@ -268,40 +268,17 @@
     },
   ];
 
-  // GitHub Activity Stats
-  const githubActivity = {
-    totalRepos: 12,
-    totalCommits: "500+",
-    currentStreak: 15,
-    languages: [
-      { name: "Python", percentage: 30, color: "#3776ab" },
-      { name: "JavaScript", percentage: 25, color: "#f7df1e" },
-      { name: "TypeScript", percentage: 20, color: "#3178c6" },
-      { name: "Java", percentage: 15, color: "#007396" },
-      { name: "Kotlin", percentage: 7, color: "#7F52FF" },
-      { name: "Other", percentage: 3, color: "#6e6e6e" },
-    ],
-    stats: [
-      { label: "Total Repositories", value: "12", icon: "📦" },
-      { label: "Total Commits", value: "500+", icon: "💻" },
-      { label: "Current Streak", value: "15 days", icon: "🔥" },
-      { label: "Code Languages", value: "6+", icon: "🌐" },
-    ],
-  };
-
-  // Contact form state
   let contactForm = {
     name: "",
     email: "",
     subject: "",
     message: "",
-    website: "", // honeypot
+    website: "",
   };
 
   let formSubmitted = false;
   let formLoading = false;
 
-  // Validation and counters
   const MESSAGE_MAX = 1000;
   const MESSAGE_MIN = 10;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -341,7 +318,6 @@
     }
   };
 
-  // Svelte action for tracking mouse and updating gradient
   function gradientFollow(node) {
     function setGradient(e) {
       const rect = node.getBoundingClientRect();
@@ -721,67 +697,6 @@
       </div>
     </div>
   </section>
-  <!-- GitHub Activity Section -->
-  <section class="github-activity-section">
-    <div class="widget" use:gradientFollow>
-      <div class="widget-header">
-        <span class="widget-icon">📊</span>
-        <span class="widget-title">GitHub Activity</span>
-      </div>
-
-      <div class="github-activity-content">
-        <!-- Stats Grid -->
-        <div class="github-stats-grid">
-          {#each githubActivity.stats as stat}
-            <div class="github-stat-card">
-              <span class="stat-icon">{stat.icon}</span>
-              <div class="stat-value">{stat.value}</div>
-              <div class="stat-label">{stat.label}</div>
-            </div>
-          {/each}
-        </div>
-
-        <!-- Language Distribution -->
-        <div class="language-section">
-          <h3 class="section-subtitle">Most Used Languages</h3>
-          <div class="language-bars">
-            {#each githubActivity.languages as lang}
-              <div class="language-item">
-                <div class="language-info">
-                  <span
-                    class="language-dot"
-                    style="background-color: {lang.color}"
-                  ></span>
-                  <span class="language-name">{lang.name}</span>
-                  <span class="language-percentage">{lang.percentage}%</span>
-                </div>
-                <div class="language-bar-container">
-                  <div
-                    class="language-bar"
-                    style="width: {lang.percentage}%; background-color: {lang.color}"
-                  ></div>
-                </div>
-              </div>
-            {/each}
-          </div>
-        </div>
-
-        <!-- GitHub Link -->
-        <div class="github-link-container">
-          <a
-            href="https://github.com/Mhmd-Aslam"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="github-profile-link"
-          >
-            <span>🔗 View Full GitHub Profile</span>
-            <span class="link-arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
   <section class="contact-section">
     <div class="widget" use:gradientFollow>
@@ -1922,7 +1837,6 @@
       rgba(0, 94, 0, 0.15) 40%,
       rgba(20, 20, 30, 0.7) 100%
     );
-    /* Existing transparency, border, shadow, etc. remain unchanged */
   }
 
   .gradient-active {
@@ -1932,161 +1846,6 @@
       rgba(0, 94, 0, 0.15) 40%,
       rgba(20, 20, 30, 0.7) 100%
     );
-  }
-
-  /* GitHub Activity Section Styles */
-  .github-activity-content {
-    padding: 1.5rem 0;
-  }
-
-  .github-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .github-stat-card {
-    background: rgba(30, 30, 40, 0.5);
-    border: 1px solid var(--border-primary);
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .github-stat-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-    box-shadow: 0 8px 16px rgba(66, 12, 107, 0.3);
-  }
-
-  .github-stat-card .stat-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  .github-stat-card .stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .github-stat-card .stat-label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    opacity: 0.8;
-  }
-
-  .language-section {
-    background: rgba(30, 30, 40, 0.3);
-    border: 1px solid var(--border-primary);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  .language-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .language-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .language-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-  }
-
-  .language-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .language-name {
-    color: var(--text-primary);
-    font-weight: 500;
-    flex: 1;
-  }
-
-  .language-percentage {
-    color: var(--text-secondary);
-    font-family: 'Courier New', monospace;
-    font-weight: 600;
-    min-width: 45px;
-    text-align: right;
-  }
-
-  .language-bar-container {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .language-bar {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 1s ease-out;
-    animation: barGrow 1.5s ease-out;
-  }
-
-  @keyframes barGrow {
-    from {
-      width: 0;
-    }
-  }
-
-  .github-link-container {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .github-profile-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.875rem 1.75rem;
-    background: rgba(66, 12, 107, 0.2);
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-
-  .github-profile-link:hover {
-    background: rgba(66, 12, 107, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(66, 12, 107, 0.4);
-  }
-
-  .github-profile-link .link-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .github-profile-link:hover .link-arrow {
-    transform: translateX(5px);
   }
 
   @media (max-width: 768px) {
