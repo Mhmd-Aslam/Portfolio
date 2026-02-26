@@ -469,7 +469,6 @@
     <!-- About Widget -->
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">🛡️</span>
         <span class="widget-title">About</span>
       </div>
       <div class="widget-content">
@@ -519,7 +518,6 @@
     <!-- Terminal Widget -->
     <div class="widget terminal-widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">💻</span>
         <span class="widget-title">Terminal</span>
         <div class="terminal-dots">
           <div class="terminal-dot red"></div>
@@ -537,7 +535,6 @@
   <section class="skills-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">💻</span>
         <span class="widget-title">Technical Skills</span>
       </div>
       <div class="skills-grid">
@@ -555,7 +552,6 @@
   <section class="projects-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">⚡</span>
         <span class="widget-title">Projects</span>
       </div>
       <div class="grid grid-3">
@@ -597,7 +593,6 @@
   <section class="education-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">📚</span>
         <span class="widget-title">Education</span>
       </div>
       <div class="education-grid">
@@ -635,7 +630,6 @@
   <section class="certifications-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">📜</span>
         <span class="widget-title">Certifications</span>
       </div>
       <div class="certifications-grid">
@@ -667,7 +661,6 @@
   <section class="tools-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">🛠️</span>
         <span class="widget-title">Tools</span>
       </div>
       <div class="tools-grid">
@@ -692,7 +685,6 @@
   <section class="achievements-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">🏆</span>
         <span class="widget-title">Achievements</span>
       </div>
       <div class="achievements-grid">
@@ -713,7 +705,6 @@
   <section class="contact-section">
     <div class="widget" use:gradientFollow>
       <div class="widget-header">
-        <span class="widget-icon">📲</span>
         <span class="widget-title">Contact</span>
       </div>
       <div class="contact-grid">
