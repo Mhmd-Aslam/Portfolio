@@ -802,27 +802,27 @@
         </form>
         <aside class="contact-side">
           <div class="qr-card">
-            <h4 class="qr-title">Scan to follow on Instagram</h4>
+            <h4 class="qr-title">Scan to follow on Linkedin</h4>
             <a
               class="qr-box"
-              href="https://www.instagram.com/mhmd__aslam__/"
+              href="https://www.linkedin.com/in/muhammad-aslam-a-a8710221a"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open Instagram profile in a new tab"
+              aria-label="Open Linkedin profile in a new tab"
             >
               <img
                 class="qr-image"
-                src="/images/ig_qr.png"
-                alt="QR code to Instagram profile @mhmd__aslam__"
+                src="/images/linkedin_qr.jpg"
+                alt="QR code to Linkedin profile @muhammad-aslam-a-a8710221a"
                 width="180"
                 height="180"
                 decoding="async"
               />
             </a>
-            <p class="qr-caption mono">@mhmd__aslam__</p>
+            <p class="qr-caption mono">@muhammad-aslam-a-a8710221a</p>
             <a
               class="qr-btn"
-              href="https://www.instagram.com/mhmd__aslam__/"
+              href="https://www.linkedin.com/in/muhammad-aslam-a-a8710221a"
               target="_blank"
               rel="noopener noreferrer">Open Profile</a
             >
