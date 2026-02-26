@@ -3,10 +3,15 @@
   import { onMount, onDestroy } from "svelte";
   import { dev } from "$app/environment";
   import { injectAnalytics } from "@vercel/analytics/sveltekit";
+  import gsap from "gsap";
+  import Lenis from "lenis";
+
   /** @type {any} */
   let vantaEffect;
   /** @type {any} */
   let vantaBgEl;
+  /** @type {any} */
+  let lenis;
 
   // Scroll state and helpers must be defined at component scope (not inside onMount)
   let lastScroll = 0;
@@ -67,6 +72,35 @@
   }
 
   onMount(async () => {
+    // Initialize Lenis
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    lenis.on("scroll", (e) => {
+      handleScroll();
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync GSAP with Lenis
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
     // Inject Vercel Analytics only in dev to avoid inline-script CSP in production
     if (dev) {
       try {
@@ -95,13 +129,12 @@
         color: 0x00ff88,
         backgroundColor: 0x020617,
       });
-    window.addEventListener("scroll", handleScroll, { passive: true });
   });
 
   // Clean up scroll listener and Vanta on component destroy (must be registered at init time)
   onDestroy(() => {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("scroll", handleScroll);
+    if (lenis) {
+      lenis.destroy();
     }
     if (vantaEffect && typeof vantaEffect.destroy === "function") {
       vantaEffect.destroy();
