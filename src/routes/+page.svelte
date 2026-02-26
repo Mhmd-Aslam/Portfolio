@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import RippleGrid from "$lib/components/RippleGrid.svelte";
 
   let currentTime = new Date();
   let terminalText = "";
@@ -287,7 +288,7 @@
   $: messageLen = (contactForm.message || "").trim().length;
   $: isMessageLongEnough = messageLen >= MESSAGE_MIN;
 
-  const handleContactSubmit = async (e) => {
+  const handleContactSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     try {
       formLoading = true;
@@ -319,8 +320,8 @@
     }
   };
 
-  function gradientFollow(node) {
-    function setGradient(e) {
+  function gradientFollow(node: HTMLElement) {
+    function setGradient(e: MouseEvent) {
       const rect = node.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -357,6 +358,17 @@
 </svelte:head>
 
 <div class="portfolio-container">
+  <RippleGrid
+    enableRainbow={true}
+    gridColor="#00ff4c"
+    rippleIntensity={0.002}
+    gridSize={3}
+    gridThickness={20}
+    mouseInteraction={true}
+    mouseInteractionRadius={1.4}
+    opacity={1}
+    glowIntensity={0}
+  />
   <!-- Header Section -->
   <section class="hero-section">
     <div class="widget hero-widget" use:gradientFollow>
