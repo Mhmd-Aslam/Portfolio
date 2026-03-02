@@ -1912,10 +1912,16 @@
     font-family: "JetBrains Mono", monospace;
   }
 
+  .project-links {
+    margin-top: auto;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
   .project-link {
     color: var(--accent-primary);
     cursor: pointer;
-    margin-top: auto; /* push link to bottom of card */
     text-decoration: none;
     display: inline-flex;
     align-items: center;
