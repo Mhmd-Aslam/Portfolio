@@ -2016,7 +2016,7 @@
   .education-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 0.1rem;
   }
   /* Education: ensure coursework tags wrap and never overflow */
   .education-item {
@@ -2024,11 +2024,11 @@
     overflow: hidden;
     border: 1px solid var(--border-secondary);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     background: rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.1rem;
     transition: all 0.3s ease;
   }
   .education-item:hover {
