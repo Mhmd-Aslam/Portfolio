@@ -141,7 +141,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Nothing UI inspired components */
+/* UI Elements */
 .widget {
   background: rgba(20, 20, 30, 0.7) !important;
   border: 1px solid var(--border-primary);
@@ -195,7 +195,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* Cybersecurity themed elements */
+/* Terminal Element */
 .terminal {
   background: var(--bg-secondary);
   border: 1px solid var(--border-secondary);
@@ -289,7 +289,7 @@ body {
   }
 }
 
-/* Glitch effect for cybersec theme */
+/* Visual Effects */
 .glitch {
   text-shadow: none !important;
   color: inherit !important;
@@ -450,7 +450,7 @@ body {
   }
 }
 
-/* New Sections Styling */
+/* Section Layouts */
 
 /* Education Section */
 .education-section {

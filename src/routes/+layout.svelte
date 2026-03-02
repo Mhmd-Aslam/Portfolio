@@ -140,7 +140,7 @@
     });
   }
 
-  // Clean up scroll listener and Vanta on component destroy (must be registered at init time)
+  // Lifecycle cleanup
   onDestroy(() => {
     if (lenis) {
       lenis.destroy();
@@ -170,13 +170,13 @@
     margin: 0 auto;
   }
 
-  /* Desktop-only global scale without affecting mobile */
+  /* Desktop Scaling */
   .scale-desktop {
     /* default (mobile/tablet) - no scaling */
     display: block; /* avoid empty ruleset & ensure normal flow */
   }
 
-  /* Remove desktop downscaling to restore 1:1 rendering on wide screens */
+  /* Wide Screen Reset */
   @media (min-width: 1025px) {
     @supports (zoom: 1) {
       .scale-desktop {

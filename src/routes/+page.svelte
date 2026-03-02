@@ -56,7 +56,7 @@
       currentTime = new Date();
     }, 1000);
 
-    // Terminal typing animation
+    // Terminal typing effect
     let commandIndex = 0;
     let charIndex = 0;
 
@@ -77,12 +77,11 @@
 
     setTimeout(typeTerminal, 1000);
 
-    // Horizontal scroll animations for events
+    // GSAP ScrollTrigger animations
     const eventCards = document.querySelectorAll(".event-card");
     const eventsGrid = document.querySelector(".events-grid");
 
     if (eventsGrid) {
-      // Horizontal scroll animation
       gsap.to(eventCards, {
         x: (i, target) => {
           return 0; // Just a placeholder if we wanted global offset
@@ -95,7 +94,7 @@
         },
       });
 
-      // Subtle entrance animation for each card
+      // Entrance transitions
       eventCards.forEach((card, i) => {
         gsap.from(card, {
           opacity: 0,
@@ -112,7 +111,7 @@
         });
       });
 
-      // Draggable-like scroll for desktop
+      // Mouse-drag scrolling
       let isDown = false;
       let startX: number;
       let scrollLeft: number;
@@ -160,7 +159,7 @@
   });
 
   const skills = [
-    // Cybersecurity
+    // Skill categories
     { name: "Penetration Testing", level: 85, icon: "🛡️" },
     { name: "Ethical Hacking", level: 90, icon: "🕵️‍♂️" },
     { name: "Network Security", level: 90, icon: "🌐" },
@@ -529,7 +528,7 @@
   <!-- Header Section -->
   <section class="hero-section">
     <div class="widget hero-widget" use:gradientFollow>
-      <!-- Status Header -->
+      <!-- Status Bar -->
       <div class="hero-header">
         <div class="status-bar">
           <img src="/images/Alogo.png" alt="Logo" class="brand-logo" />
@@ -567,7 +566,7 @@
             </div>
           </div>
 
-          <!-- Info Section -->
+          <!-- Profile Details -->
           <div class="hero-info">
             <div class="hero-text">
               <h1 class="hero-title">
@@ -633,7 +632,7 @@
     </div>
   </section>
 
-  <!-- Main Content Grid -->
+  <!-- Main Content -->
   <div class="grid grid-2 main-grid">
     <!-- About Widget -->
     <div class="widget" use:gradientFollow>
@@ -943,7 +942,7 @@
       </div>
       <div class="contact-grid">
         <form on:submit={handleContactSubmit}>
-          <!-- Honeypot field: hidden from users, visible to bots -->
+          <!-- Spam Protection -->
           <div
             style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"
             aria-hidden="true"
@@ -1153,7 +1152,7 @@
     font-size: inherit;
   }
 
-  /* Ensure hero container and header don't cause overflow */
+  /* Hero Section */
   .hero-widget {
     box-sizing: border-box;
     max-width: 100%;
@@ -1170,7 +1169,7 @@
   .hero-header > * {
     min-width: 0;
   }
-  /* Status bar row with time on the right */
+  /* Header Layout */
   .status-bar {
     display: flex;
     align-items: center;
@@ -1209,7 +1208,7 @@
     max-width: 100%;
   }
 
-  /* Extra-small devices: reduce hero text sizes to prevent overflow without breaking words */
+  /* Responsive Hero */
   @media (max-width: 360px) {
     .hero-title {
       font-size: clamp(1.05rem, 0.9rem + 2vw, 2.25rem);
@@ -1252,7 +1251,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* Resume CTA stat card (same structure as stats, unique border/glow) */
+  /* Resume Button */
   .stat-resume {
     display: flex;
     flex-direction: column;
@@ -1324,7 +1323,7 @@
     border-radius: 10px;
   }
 
-  /* Fix tiny scaling on 16:9 by scaling with vmin (height-aware) on wide screens */
+  /* Global Scaling (Wide Screens) */
   @media (min-aspect-ratio: 16/9) and (min-width: 1024px) {
     .hero-main {
       gap: 3rem;
@@ -1486,7 +1485,7 @@
     flex-wrap: wrap;
   }
 
-  /* Contact grid responsive layout */
+  /* Contact Layout */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1515,12 +1514,12 @@
     box-sizing: border-box;
   }
 
-  /* Avoid accidental global horizontal scroll from shadows/paddings */
+  /* Layout Constraints */
   .portfolio-container {
     overflow-x: hidden;
   }
 
-  /* Contact form inputs */
+  /* Form Controls */
   .contact-grid textarea {
     resize: none; /* prevent manual resize */
     overflow: auto; /* allow scrolling for long messages */
@@ -1576,7 +1575,7 @@
     transform: translateY(-1px);
   }
 
-  /* Right-side QR panel */
+  /* Social Presence */
   .contact-side {
     display: flex;
     justify-content: center;
@@ -1655,7 +1654,7 @@
     box-shadow: 0 6px 20px rgba(0, 255, 136, 0.12);
   }
 
-  /* Responsive sizing for the QR panel */
+  /* Responsive Social */
   @media (max-width: 1024px) {
     .qr-card {
       max-width: 380px;
@@ -1678,7 +1677,7 @@
     }
   }
 
-  /* Improved Send button */
+  /* Actions */
   .btn-send {
     display: inline-flex;
     align-items: center;
@@ -1931,7 +1930,7 @@
     overflow-wrap: anywhere;
   }
 
-  /* Make 3-col project grid responsive and non-overflowing */
+  /* Projects Grid */
   .projects-section .grid.grid-3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -2013,12 +2012,19 @@
     border-color: var(--accent-primary);
   }
 
+  .education-section .widget,
+  .events-section .widget {
+    padding-bottom: 0rem;
+  }
+  .events-grid {
+    padding-bottom: 2rem !important;
+  }
   .education-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.1rem;
   }
-  /* Education: ensure coursework tags wrap and never overflow */
+  /* Education Items */
   .education-item {
     max-width: 100%;
     overflow: hidden;
@@ -2088,7 +2094,7 @@
     overflow-wrap: anywhere; /* break extremely long tokens if needed */
   }
 
-  /* Achievements: prevent overflow on small screens */
+  /* Achievements Grid */
   .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
