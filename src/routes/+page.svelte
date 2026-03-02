@@ -290,15 +290,31 @@
       university: "APJ Abdul Kalam Technological University, Kerala, India",
       location: "Kerala, India",
       period: "2022 - 2026",
-      status: "In Progress",
+      status: "CGPA: 7.7 (upto S7)",
       coursework: [
         "Network Security",
         "Cryptography",
         "Ethical Hacking",
         "Digital Forensics",
         "Malware Analysis",
-        "Incident Response",
+        "Software Development",
       ],
+    },
+    {
+      degree: "Class 12 Computer Science (CBSE)",
+      institution:
+        "Cardinal Padiayara Public School & Junior College, Manimala",
+      university: "Central Board of Secondary Education (CBSE)",
+      period: "2020 - 2021",
+      status: "Score: 88.2%",
+    },
+    {
+      degree: "Class 10 (CBSE)",
+      institution:
+        "Cardinal Padiayara Public School & Junior College, Manimala",
+      university: "Central Board of Secondary Education (CBSE)",
+      period: "2018 - 2019",
+      status: "Score: 84%",
     },
   ];
 
@@ -752,27 +768,40 @@
         {#each education as edu}
           <div class="education-item">
             <div class="education-header">
-              <span class="education-icon">🎓</span>
-              <div class="education-line">{edu.degree}</div>
-              <div class="education-line">{edu.institution}</div>
+              <div class="education-title-row">
+                <h3 class="education-line degree-line">{edu.degree}</h3>
+              </div>
+              <div class="education-line institution-line">
+                {edu.institution}
+              </div>
               {#if edu.university}
-                <div class="education-line">{edu.university}</div>
+                <div class="education-line university-line">
+                  {edu.university}
+                </div>
               {/if}
               {#if edu.period && edu.status}
-                <div class="education-line">{edu.period} ({edu.status})</div>
+                <div class="education-line period-line">
+                  {edu.period}
+                  <span class="education-status">{edu.status}</span>
+                </div>
               {:else if edu.period}
-                <div class="education-line">{edu.period}</div>
+                <div class="education-line period-line">
+                  {edu.period}
+                </div>
               {:else if edu.status}
-                <div class="education-line">({edu.status})</div>
+                <div class="education-line status-line">
+                  <span class="education-status">{edu.status}</span>
+                </div>
               {/if}
-              <div class="education-line"></div>
             </div>
-            <div class="education-coursework">
-              {#each edu.coursework as course, i}
-                <span class="course-tag">{course}</span
-                >{#if i < edu.coursework.length - 1}&nbsp;{/if}
-              {/each}
-            </div>
+            {#if edu.coursework && edu.coursework.length > 0}
+              <div class="education-coursework">
+                {#each edu.coursework as course, i}
+                  <span class="course-tag">{course}</span
+                  >{#if i < edu.coursework.length - 1}&nbsp;{/if}
+                {/each}
+              </div>
+            {/if}
           </div>
         {/each}
       </div>
@@ -1978,19 +2007,72 @@
     border-color: var(--accent-primary);
   }
 
+  .education-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
   /* Education: ensure coursework tags wrap and never overflow */
   .education-item {
     max-width: 100%;
     overflow: hidden;
+    border: 1px solid var(--border-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+  .education-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 255, 136, 0.15);
   }
   .education-header {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .education-title-row {
+    margin-bottom: 0.25rem;
+  }
+  .degree-line {
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  .institution-line {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .university-line {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .period-line {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  .education-status {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-left: 0.25rem;
   }
   .education-coursework {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     max-width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   .education-coursework .course-tag {
     display: inline-block;
