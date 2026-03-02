@@ -142,7 +142,7 @@
       // Keyboard navigation
       window.addEventListener("keydown", (e: KeyboardEvent) => {
         if (selectedEvent) return; // Don't scroll grid if preview is open
-        
+
         const rect = eventsGrid.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
         if (!isInView) return;
@@ -491,13 +491,15 @@
   }
 </script>
 
-<svelte:window on:keydown={(e) => {
-  if (selectedEvent) {
-    if (e.key === "Escape") closePreview();
-    if (e.key === "ArrowRight") nextPreview();
-    if (e.key === "ArrowLeft") prevPreview();
-  }
-}} />
+<svelte:window
+  on:keydown={(e) => {
+    if (selectedEvent) {
+      if (e.key === "Escape") closePreview();
+      if (e.key === "ArrowRight") nextPreview();
+      if (e.key === "ArrowLeft") prevPreview();
+    }
+  }}
+/>
 
 <svelte:head>
   <title>Mhmd Aslam Portfolio</title>
@@ -894,7 +896,7 @@
         <button class="close-preview" on:click={closePreview} aria-label="Close"
           >&times;</button
         >
-        
+
         <img
           src={selectedEvent.image}
           alt={selectedEvent.title}

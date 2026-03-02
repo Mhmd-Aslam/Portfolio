@@ -936,9 +936,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .events-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
+  .event-card {
+    flex: 0 0 280px;
   }
 }
 
