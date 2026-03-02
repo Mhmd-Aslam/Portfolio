@@ -1,8 +1,39 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
   let currentTime = new Date();
   let terminalText = "";
+  let selectedEvent: any = null;
+
+  const openPreview = (event: any) => {
+    selectedEvent = event;
+    window.dispatchEvent(new CustomEvent("lock-scroll"));
+  };
+
+  const closePreview = () => {
+    selectedEvent = null;
+    window.dispatchEvent(new CustomEvent("unlock-scroll"));
+  };
+
+  const nextPreview = () => {
+    const currentIndex = events.indexOf(selectedEvent);
+    if (currentIndex < events.length - 1) {
+      selectedEvent = events[currentIndex + 1];
+    } else {
+      selectedEvent = events[0]; // Loop to start
+    }
+  };
+
+  const prevPreview = () => {
+    const currentIndex = events.indexOf(selectedEvent);
+    if (currentIndex > 0) {
+      selectedEvent = events[currentIndex - 1];
+    } else {
+      selectedEvent = events[events.length - 1]; // Loop to end
+    }
+  };
 
   const terminalCommands = [
     "$ whoami",
@@ -18,6 +49,9 @@
   ];
 
   onMount(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+    }
     const interval = setInterval(() => {
       currentTime = new Date();
     }, 1000);
@@ -42,6 +76,85 @@
     };
 
     setTimeout(typeTerminal, 1000);
+
+    // Horizontal scroll animations for events
+    const eventCards = document.querySelectorAll(".event-card");
+    const eventsGrid = document.querySelector(".events-grid");
+
+    if (eventsGrid) {
+      // Horizontal scroll animation
+      gsap.to(eventCards, {
+        x: (i, target) => {
+          return 0; // Just a placeholder if we wanted global offset
+        },
+        scrollTrigger: {
+          trigger: ".events-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      // Subtle entrance animation for each card
+      eventCards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          rotationY: 15,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      // Draggable-like scroll for desktop
+      let isDown = false;
+      let startX: number;
+      let scrollLeft: number;
+
+      eventsGrid.addEventListener("mousedown", (e: any) => {
+        isDown = true;
+        eventsGrid.classList.add("active");
+        startX = e.pageX - (eventsGrid as HTMLElement).offsetLeft;
+        scrollLeft = eventsGrid.scrollLeft;
+      });
+      eventsGrid.addEventListener("mouseleave", () => {
+        isDown = false;
+        eventsGrid.classList.remove("active");
+      });
+      eventsGrid.addEventListener("mouseup", () => {
+        isDown = false;
+        eventsGrid.classList.remove("active");
+      });
+      eventsGrid.addEventListener("mousemove", (e: any) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - (eventsGrid as HTMLElement).offsetLeft;
+        const walk = (x - startX) * 2;
+        eventsGrid.scrollLeft = scrollLeft - walk;
+      });
+
+      // Keyboard navigation
+      window.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (selectedEvent) return; // Don't scroll grid if preview is open
+        
+        const rect = eventsGrid.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isInView) return;
+
+        const scrollAmount = 540; // Card width + gap (approx)
+        if (e.key === "ArrowRight") {
+          eventsGrid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        } else if (e.key === "ArrowLeft") {
+          eventsGrid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        }
+      });
+    }
 
     return () => clearInterval(interval);
   });
@@ -267,6 +380,36 @@
       description:
         "Won first position in Auto Quiz at Spectra 2.0, organized by SAEINDIA Collegiate Club of SJCET.",
     },
+    {
+      title: "CYA QUEST CTF",
+      rank: "2nd Place",
+      date: "27 Feb 2026",
+      description:
+        "Secured Second Prize in CYA QUEST CTF competition organized by Cybersecurity Association (CYA). Represented Team Cryptonites from S8 Cybersecurity.",
+    },
+  ];
+
+  const events = [
+    {
+      title: "Talk CYA",
+      image: "/images/events/1. Talk cya.jpg",
+    },
+    {
+      title: "RIT Talk",
+      image: "/images/events/2. RIT Talk.jpg",
+    },
+    {
+      title: "CYA CTF Winning",
+      image: "/images/events/3. Cya CTF.jpg",
+    },
+    {
+      title: "NPTEL Certification",
+      image: "/images/events/4. NPTEL.jpg",
+    },
+    {
+      title: "SAE 1st Prize",
+      image: "/images/events/5. SAE 1st.jpg",
+    },
   ];
 
   let contactForm = {
@@ -287,7 +430,7 @@
   $: messageLen = (contactForm.message || "").trim().length;
   $: isMessageLongEnough = messageLen >= MESSAGE_MIN;
 
-  const handleContactSubmit = async (e) => {
+  const handleContactSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     try {
       formLoading = true;
@@ -319,8 +462,8 @@
     }
   };
 
-  function gradientFollow(node) {
-    function setGradient(e) {
+  function gradientFollow(node: HTMLElement) {
+    function setGradient(e: MouseEvent) {
       const rect = node.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -347,6 +490,14 @@
     };
   }
 </script>
+
+<svelte:window on:keydown={(e) => {
+  if (selectedEvent) {
+    if (e.key === "Escape") closePreview();
+    if (e.key === "ArrowRight") nextPreview();
+    if (e.key === "ArrowLeft") prevPreview();
+  }
+}} />
 
 <svelte:head>
   <title>Mhmd Aslam Portfolio</title>
@@ -701,6 +852,58 @@
       </div>
     </div>
   </section>
+
+  <!-- Events Section -->
+  <section class="events-section">
+    <div class="widget" use:gradientFollow>
+      <div class="widget-header">
+        <span class="widget-title">Events & Achievements</span>
+      </div>
+      <div class="events-grid">
+        {#each events as event}
+          <div
+            class="event-card"
+            on:click={() => openPreview(event)}
+            on:keydown={(e) => e.key === "Enter" && openPreview(event)}
+            role="button"
+            tabindex="0"
+          >
+            <img src={event.image} alt={event.title} class="event-poster" />
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Modal -->
+  {#if selectedEvent}
+    <div
+      class="preview-modal"
+      class:active={selectedEvent}
+      on:click={closePreview}
+      role="button"
+      tabindex="0"
+      aria-label="Close preview"
+    >
+      <div
+        class="preview-content"
+        on:click|stopPropagation={() => {}}
+        on:keydown|stopPropagation={() => {}}
+        role="presentation"
+      >
+        <button class="close-preview" on:click={closePreview} aria-label="Close"
+          >&times;</button
+        >
+        
+        <img
+          src={selectedEvent.image}
+          alt={selectedEvent.title}
+          class="preview-image"
+        />
+      </div>
+    </div>
+  {/if}
+
   <!-- Contact Section -->
   <section class="contact-section">
     <div class="widget" use:gradientFollow>
@@ -1179,13 +1382,6 @@
     padding-left: 1.1rem;
     color: var(--text-secondary);
     flex: 1 1 auto;
-  }
-  .experience-list li {
-    margin: 0.25rem 0;
-    position: relative;
-  }
-  .experience-list li::marker {
-    color: var(--accent-primary);
   }
   .experience-footer {
     margin-top: 0.75rem;

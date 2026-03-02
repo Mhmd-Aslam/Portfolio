@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "../app.css";
   import { onMount, onDestroy } from "svelte";
   import { dev } from "$app/environment";
@@ -6,12 +6,9 @@
   import gsap from "gsap";
   import Lenis from "lenis";
 
-  /** @type {any} */
-  let vantaEffect;
-  /** @type {any} */
-  let vantaBgEl;
-  /** @type {any} */
-  let lenis;
+  let vantaEffect: any;
+  let vantaBgEl: HTMLElement;
+  let lenis: any;
 
   // Scroll state and helpers must be defined at component scope (not inside onMount)
   let lastScroll = 0;
@@ -42,7 +39,7 @@
       vantaEffect.setOptions({ maxDistance, spacing, color });
     }
   }
-  function lerpColor(a, b, t) {
+  function lerpColor(a: number, b: number, t: number) {
     const ar = (a >> 16) & 0xff,
       ag = (a >> 8) & 0xff,
       ab = a & 0xff;
@@ -59,8 +56,8 @@
    * @param {string} src
    * @returns {Promise<void>}
    */
-  function loadScript(src) {
-    return new Promise((resolve, reject) => {
+  function loadScript(src: string) {
+    return new Promise<void>((resolve, reject) => {
       if (document.querySelector(`script[src='${src}']`)) return resolve();
       const script = document.createElement("script");
       script.src = src;
@@ -75,28 +72,27 @@
     // Initialize Lenis
     lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
     });
 
-    lenis.on("scroll", (e) => {
+    lenis.on("scroll", (e: any) => {
       handleScroll();
     });
 
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
     // Sync GSAP with Lenis
-    gsap.ticker.add((time) => {
+    gsap.ticker.add((time: number) => {
       lenis.raf(time * 1000);
     });
     gsap.ticker.lagSmoothing(0);
@@ -113,9 +109,11 @@
     await loadScript(
       "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js",
     );
+    const vanta = (window as any).VANTA;
     vantaEffect =
-      window.VANTA.NET &&
-      window.VANTA.NET({
+      vanta &&
+      vanta.NET &&
+      vanta.NET({
         el: vantaBgEl,
         mouseControls: true,
         touchControls: true,
@@ -130,6 +128,17 @@
         backgroundColor: 0x020617,
       });
   });
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("lock-scroll", () => {
+      if (lenis) lenis.stop();
+      document.body.style.overflow = "hidden";
+    });
+    window.addEventListener("unlock-scroll", () => {
+      if (lenis) lenis.start();
+      document.body.style.overflow = "auto";
+    });
+  }
 
   // Clean up scroll listener and Vanta on component destroy (must be registered at init time)
   onDestroy(() => {

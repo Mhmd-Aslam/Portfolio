@@ -1,60 +1,60 @@
 <script lang="ts">
-  import Particles from 'svelte-particles';
+  import Particles from "@tsparticles/svelte";
 
   // Example cyber/techy config, can be customized
   const options = {
     background: {
-      color: { value: 'transparent' }
+      color: { value: "transparent" },
     },
     fpsLimit: 60,
     interactivity: {
       events: {
-        onHover: { enable: true, mode: 'repulse' },
-        resize: true
+        onHover: { enable: true, mode: "repulse" },
+        resize: { enable: true },
       },
       modes: {
-        repulse: { distance: 80, duration: 0.4 }
-      }
+        repulse: { distance: 80, duration: 0.4 },
+      },
     },
     particles: {
-      color: { value: '#00ffea' },
+      color: { value: "#00ffea" },
       links: {
-        color: '#00ffea',
+        color: "#00ffea",
         distance: 120,
         enable: true,
         opacity: 0.4,
-        width: 1
+        width: 1,
       },
       collisions: { enable: false },
       move: {
-        direction: 'none',
+        direction: "none",
         enable: true,
-        outModes: { default: 'bounce' },
+        outModes: { default: "bounce" },
         random: false,
         speed: 1.5,
-        straight: false
+        straight: false,
       },
       number: {
         density: { enable: true, area: 900 },
-        value: 60
+        value: 60,
       },
       opacity: { value: 0.5 },
-      shape: { type: 'circle' },
-      size: { value: { min: 1, max: 4 } }
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 4 } },
     },
-    detectRetina: true
-  };
+    detectRetina: true,
+  } as const;
 </script>
 
-<style>
-.particles-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-</style>
-
 <div class="particles-bg">
-  <Particles id="tsparticles" options={options} />
+  <Particles id="tsparticles" {options} />
 </div>
+
+<style>
+  .particles-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+</style>
