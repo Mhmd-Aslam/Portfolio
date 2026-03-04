@@ -42,7 +42,7 @@
     "Penetration Testing, Network Security, Malware Analysis",
     "Cryptography, Incident Response, Digital Forensics",
     "$ ls projects/",
-    "vulnerability_scanner.py  network_monitor.sh  crypto_tool.c",
+    "retailsec-ai  obscura  wibe-crawler  fezla-crypter  shieldx-antivirus",
     '$ echo "Welcome to my portfolio"',
     "Welcome to my portfolio",
     "$ _",
@@ -185,6 +185,15 @@
 
   const projects = [
     {
+      title: "RetailSec AI",
+      description:
+        "AI-powered SOC dashboard for retail. Features real-time threat detection and automated incident analysis using Llama-3.",
+      tech: ["Next.js", "AI/ML", "Security"],
+      threat_level: "HIGH",
+      link: "https://github.com/Mhmd-Aslam/RetailSec-AI",
+      live_link: "https://retailsec-ai.vercel.app/",
+    },
+    {
       title: "Obscura",
       description:
         "Advanced steganography and cryptography toolkit for secure communication",
@@ -192,6 +201,14 @@
       threat_level: "HIGH",
       link: "https://github.com/Mhmd-Aslam/Obscura",
       live_link: "https://obscura-sec.vercel.app",
+    },
+    {
+      title: "wibe-crawler",
+      description:
+        "Automated web vulnerability scanner and security assessment tool",
+      tech: ["Svelte", "Security", "Web"],
+      threat_level: "HIGH",
+      link: "https://github.com/Mhmd-Aslam/wibe-crawler",
     },
     {
       title: "Fezla-Crypter",
@@ -210,14 +227,6 @@
       link: "https://github.com/Mhmd-Aslam/ShieldX-Antivirus",
     },
     {
-      title: "wibe-crawler",
-      description:
-        "Automated web vulnerability scanner and security assessment tool",
-      tech: ["Svelte", "Security", "Web"],
-      threat_level: "MEDIUM",
-      link: "https://github.com/Mhmd-Aslam/wibe-crawler",
-    },
-    {
       title: "Cryptography",
       description:
         "Java-based cryptographic algorithms and security primitives implementation",
@@ -234,6 +243,13 @@
       link: "https://github.com/Mhmd-Aslam/Portfolio",
     },
     {
+      title: "Mandhiit",
+      description: "Web application for community engagement and communication",
+      tech: ["JavaScript", "Web Dev", "React"],
+      threat_level: "LOW",
+      link: "https://github.com/Mhmd-Aslam/Mandhiit",
+    },
+    {
       title: "ChargeBuzz-2.0",
       description:
         "Enhanced battery monitoring Android app with smart notifications",
@@ -248,13 +264,6 @@
       tech: ["Kotlin", "Android", "Mobile"],
       threat_level: "LOW",
       link: "https://github.com/Mhmd-Aslam/ChargeBuzz",
-    },
-    {
-      title: "Mandhiit",
-      description: "Web application for community engagement and communication",
-      tech: ["JavaScript", "Web Dev", "React"],
-      threat_level: "LOW",
-      link: "https://github.com/Mhmd-Aslam/Mandhiit",
     },
     {
       title: "Anubis4D",
@@ -600,7 +609,7 @@
         <!-- Stats Section -->
         <div class="hero-stats">
           <div class="stat">
-            <div class="stat-value">12</div>
+            <div class="stat-value">15</div>
             <div class="stat-label">Public Repos</div>
           </div>
           <div class="stat">
