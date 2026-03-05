@@ -1079,7 +1079,7 @@
     <div class="widget footer-widget" use:gradientFollow>
       <div class="footer-content">
         <p class="mono">
-          <span class="copyright-symbol">©</span> • 2025 • MHMD ASLAM • All Rights
+          <span class="copyright-symbol">©</span> • 2026 • MHMD ASLAM • All Rights
           Reserved
         </p>
         <div class="footer-status">
