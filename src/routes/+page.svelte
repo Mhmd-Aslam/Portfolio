@@ -326,6 +326,21 @@
     },
   ];
 
+  const research = [
+    {
+      title:
+        "Retrieval Augmented Generation In The Context Of Penetration Testing",
+      conference:
+        "International Conference on Sustainable Development in Renewable Energy and Computing Techniques (ICSRC'26)",
+      institution: "Mar Baselios Institute of Technology and Science (MBITS)",
+      date: "March 2026",
+      status: "Presented",
+      url: "/pdf/ICSRC_cert.pdf",
+      description:
+        "Research paper exploring the integration of RAG (Retrieval-Augmented Generation) with penetration testing methodologies to enhance automated vulnerability assessment.",
+    },
+  ];
+
   const certifications = [
     {
       name: "Internet of Things",
@@ -765,7 +780,36 @@
       </div>
     </div>
   </section>
-
+ 
+  <!-- Research Section -->
+  {#if research && research.length > 0}
+    <section class="research-section">
+      <div class="widget" use:gradientFollow>
+        <div class="widget-header">
+          <span class="widget-title">Research & Publications</span>
+        </div>
+        <div class="research-grid">
+          {#each research as item}
+            <div class="research-item">
+              <div class="research-header">
+                <div class="research-title">
+                  <a href={item.url} target="_blank" rel="noopener noreferrer"
+                    >{item.title} ↗</a
+                  >
+                </div>
+              </div>
+              <div class="research-meta">
+                <span class="res-badge conference">{item.conference}</span>
+                <span class="res-badge date">{item.date}</span>
+              </div>
+              <p class="research-description">{item.description}</p>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </section>
+  {/if}
+ 
   <!-- Education Section -->
   <section class="education-section">
     <div class="widget" use:gradientFollow>
@@ -2019,6 +2063,67 @@
   .cert-badge.status {
     color: var(--accent-primary);
     border-color: var(--accent-primary);
+  }
+
+  /* Research & Publications */
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .research-item {
+    border: 1px solid var(--border-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+  }
+  .research-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .research-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .research-title a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .research-title a:hover {
+    color: var(--accent-primary);
+  }
+  .research-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .res-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .res-badge.conference {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+  }
+  .res-badge.date {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border: 1px solid var(--border-secondary);
+  }
+  .research-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
   }
 
   .education-section .widget,
