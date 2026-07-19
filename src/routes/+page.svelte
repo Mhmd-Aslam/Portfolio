@@ -37,7 +37,7 @@
 
   const terminalCommands = [
     "$ whoami",
-    "cybersec_student",
+    "cybersec_engineer",
     "$ cat skills.txt",
     "Penetration Testing, Network Security, Malware Analysis",
     "Cryptography, Incident Response, Digital Forensics",
@@ -298,7 +298,7 @@
       university: "APJ Abdul Kalam Technological University, Kerala, India",
       location: "Kerala, India",
       period: "2022 - 2026",
-      status: "CGPA: 7.7 (upto S7)",
+      status: "CGPA: 7.83",
       coursework: [
         "Network Security",
         "Cryptography",
@@ -311,7 +311,7 @@
     {
       degree: "Class 12 Computer Science (CBSE)",
       institution:
-        "Cardinal Padiayara Public School & Junior College, Manimala",
+        "Cardinal Padiyara Public School & Junior College, Manimala",
       university: "Central Board of Secondary Education (CBSE)",
       period: "2020 - 2021",
       status: "Score: 88.2%",
@@ -319,7 +319,7 @@
     {
       degree: "Class 10 (CBSE)",
       institution:
-        "Cardinal Padiayara Public School & Junior College, Manimala",
+        "Cardinal Padiyara Public School & Junior College, Manimala",
       university: "Central Board of Secondary Education (CBSE)",
       period: "2018 - 2019",
       status: "Score: 84%",
@@ -429,6 +429,10 @@
   ];
 
   const events = [
+    {
+      title: "Placements",
+      image: "/images/events/6. Placements.jpg",
+    },
     {
       title: "Talk CYA",
       image: "/images/events/1. Talk cya.jpg",
@@ -542,7 +546,7 @@
 
 <svelte:head>
   <title>Mhmd Aslam Portfolio</title>
-  <meta name="description" content="Portfolio of Mhmd Aslam " />
+  <meta name="description" content="Portfolio of Mhmd Aslam" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/images/Alogo.png" sizes="any" />
   <link rel="apple-touch-icon" href="/images/Alogo.png" />
@@ -578,7 +582,7 @@
           <div class="hero-avatar-section">
             <div class="hero-avatar">
               <img
-                src="./images/dp.png"
+                src="/images/dp.png"
                 alt="Muhammad Aslam A"
                 class="avatar-image"
               />
@@ -598,7 +602,7 @@
               </h1>
 
               <div class="hero-roles">
-                <span class="role-tag primary">🛡️ CyberSecurity Student</span>
+                <span class="role-tag primary">🛡️ CyberSecurity Engineer</span>
                 <span class="role-tag secondary">💻 Creative Developer</span>
                 <span class="role-tag tertiary btech"
                   >🎓 BTech Computer Science</span
@@ -666,10 +670,10 @@
       <div class="widget-content">
         <div class="about-grid">
           <div class="about-info">
-            <h3>Cyber Security Student & Creative Developer</h3>
+            <h3>Cyber Security Engineer & Creative Developer</h3>
             <p>
-              Passionate CyberSecurity student and creative developer from
-              Kottayam, Kerala, India. Currently pursuing BTech in Computer
+              Passionate CyberSecurity engineer and creative developer from
+              Kottayam, Kerala, India. Completed BTech in Computer
               Science and Engineering with a specialization in CyberSecurity. I
               love exploring new technologies, building creative solutions, and
               diving deep into security research and development.
